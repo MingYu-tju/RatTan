@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "原野",
+  "usingComponents": {
+    "show-message": "/components/showMessage/showMessage"
+  }
+}

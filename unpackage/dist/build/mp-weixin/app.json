@@ -1,0 +1,34 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/addmessage/addmessage",
+    "pages/historymessage/historymessage"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#8d99a9",
+    "selectedColor": "#00aa00",
+    "list": [
+      {
+        "text": "原野",
+        "pagePath": "pages/index/index",
+        "iconPath": "static/tarbar/草原.png",
+        "selectedIconPath": "static/tarbar/草原 (1).png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/about/about",
+        "iconPath": "static/tarbar/老鼠.png",
+        "selectedIconPath": "static/tarbar/老鼠 (1).png"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

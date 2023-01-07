@@ -1,0 +1,80 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "原野",
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+		}
+	    ,{
+            "path" : "pages/login/login",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "登录",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				} 
+            }
+            
+        }
+        ,{
+            "path" : "pages/addmessage/addmessage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "发言",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+            }
+            
+        }
+        ,{
+            "path" : "pages/historymessage/historymessage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "历史发言",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/details/details",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "详情页",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"tabBar": {
+		"color": "#8d99a9",
+		"selectedColor": "#00aa00",
+		"list": [
+			{
+			    "text": "原野",
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tarbar/grass.png",
+				"selectedIconPath": "static/tarbar/grass1.png"
+			},
+			{
+				"text": "登录",
+				"pagePath": "pages/login/login",
+				"iconPath": "static/tarbar/mouse.png",
+				"selectedIconPath": "static/tarbar/mouse1.png"
+			}
+		]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}
