@@ -3,7 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "原野",
+				"navigationBarTitleText": "首页",
 				"app-plus": {
 					"bounce": "none"
 				}
@@ -38,7 +38,10 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "历史发言",
-                "enablePullDownRefresh": false
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
             }
             
         }
@@ -51,22 +54,51 @@
             }
             
         }
+        ,{
+            "path" : "pages/loginSuccess/loginSuccess",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/changeImage/changeImage",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				} 
+            }
+            
+        }
     ],
 	"tabBar": {
-		"color": "#8d99a9",
-		"selectedColor": "#00aa00",
+		"color": "#ffffff",
+		"selectedColor": "#000000",
+		"backgroundColor": "#079494",
+		"iconWidth": "33px",
+		"midButton": {
+			
+			"width": "80px",
+			"height": "80px",
+			"backgroundImage": "static/tarbar/send.png"
+		},
 		"list": [
 			{
-			    "text": "原野",
+			    "text": "首页",
 				"pagePath": "pages/index/index",
-				"iconPath": "static/tarbar/grass.png",
-				"selectedIconPath": "static/tarbar/grass1.png"
+				"iconPath": "static/tarbar/index.png",
+				"selectedIconPath": "static/tarbar/index.png"
 			},
 			{
 				"text": "登录",
 				"pagePath": "pages/login/login",
-				"iconPath": "static/tarbar/mouse.png",
-				"selectedIconPath": "static/tarbar/mouse1.png"
+				"iconPath": "static/tarbar/my.png",
+				"selectedIconPath": "static/tarbar/my.png"
 			}
 		]
 	},
@@ -78,3 +110,4 @@
 	},
 	"uniIdRouter": {}
 }
+ 

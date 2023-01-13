@@ -2,9 +2,10 @@
 	<view class="ground">
 
 		<view class="hist">
-			<button class="history" @click="gotoHistory">历史发言</button>
+			<view class="history" @click="gotoHistoryPage">
+				<image src="../../static/history.png"></image>
+			</view>
 		</view>
-
 
 		<view class="tubebox">
 			<view class="tubebox1">
@@ -33,7 +34,7 @@
 					<showMessage v-if="0"></showMessage>
 				</view>
 				<view class="tube">
-					<showMessage v-if="show3" :item="item3" ></showMessage>
+					<showMessage v-if="show3" :item="item3"></showMessage>
 				</view>
 				<view class="tube">
 					<showMessage v-if="0"></showMessage>
@@ -102,14 +103,10 @@
 		</view>
 
 		<view class="tail">
-			<view class="custom">
-				<image src="../../static/test.jpg"></image>
+			<view class="custom" @click="changeImg">
+				<image src="../../static/testimage.png"></image>
 			</view>
-			<navigator url="../addmessage/addmessage">
-				<button class="say" type="primary" plain="true">发言</button>
-			</navigator>
 		</view>
-
 	</view>
 
 </template>
@@ -135,19 +132,46 @@
 			}
 		},
 		methods: {
-			gotoHistory() {
-				uni.navigateTo({
-					url: "../historymessage/historymessage"
-				})
+			gotoHistoryPage() {
+				if (getApp().globalData.login)
+					uni.navigateTo({
+						url: "../historymessage/historymessage"
+					})
+				else {
+					uni.switchTab({
+						url: "/pages/login/login"
+					})
+				}
+			},
+			addMessage() {
+				if (getApp().globalData.login)
+					uni.navigateTo({
+						url: "/pages/addmessage/addmessage"
+					})
+				else {
+					uni.switchTab({
+						url: "/pages/login/login"
+					})
+				}
+			},
+			changeImg() {
+				if (getApp().globalData.login)
+					uni.navigateTo({
+						url: "/pages/changeImage/changeImage"
+					})
+				else {
+					uni.switchTab({
+						url: "/pages/login/login"
+					})
+				}
 			},
 			getTitle1() {
 				uni.request({
 					method: 'GET',
 					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
 					success: res => {
-						console.log(res)
 						this.item1 = {
-							Id:res.data.id,
+							Id: res.data.id,
 							title: res.data.title,
 							picsrc: res.data.thumbnailUrl
 						}
@@ -165,7 +189,7 @@
 					success: res => {
 						setTimeout(e => {
 							this.item2 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
@@ -185,7 +209,7 @@
 					success: res => {
 						setTimeout(e => {
 							this.item3 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
@@ -203,7 +227,7 @@
 					success: res => {
 						setTimeout(e => {
 							this.item4 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
@@ -221,7 +245,7 @@
 					success: res => {
 						setTimeout(e => {
 							this.item5 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
@@ -239,7 +263,7 @@
 					success: res => {
 						setTimeout(e => {
 							this.item6 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
@@ -257,14 +281,14 @@
 					success: res => {
 						setTimeout(e => {
 							this.item7 = {
-								Id:res.data.id,
+								Id: res.data.id,
 								title: res.data.title,
 								picsrc: res.data.thumbnailUrl
 							}
 							this.show7 = 1
 							setTimeout(e => this.show7 = 0, 15000)
-						},22000)
-			
+						}, 22000)
+
 					}
 				})
 			}
@@ -292,16 +316,22 @@
 	.hist {
 		width: 750rpx;
 		height: 140rpx;
-		background-color: #dadada;
 		position: fixed;
 		top: var(--window-top);
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
 		.history {
-			width: 300rpx;
+			width: 80rpx;
+			height: 80rpx;
 			position: absolute;
 			right: 30rpx;
+
+			image {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 
@@ -311,11 +341,13 @@
 		margin-top: 300rpx;
 		display: flex;
 		flex-direction: column;
-		bounce:none;
+		bounce: none;
+
 		.tubebox1 {
 			flex: 1;
 			display: flex;
 			justify-content: center;
+
 			.tube {
 				width: 140rpx;
 				height: 140rpx;
@@ -331,6 +363,7 @@
 			flex: 1;
 			display: flex;
 			justify-content: center;
+
 			.tube {
 				width: 140rpx;
 				height: 140rpx;
@@ -344,20 +377,22 @@
 
 	.tail {
 		width: 750rpx;
-		background-color: #dadada;
 		position: fixed;
 		bottom: var(--window-bottom);
 		display: flex;
 		justify-content: center;
+		bottom: 90rpx;
+
 		.custom {
-			width: 150rpx;
-			height: 150rpx;
+			width: 200rpx;
+			height: 200rpx;
 			padding: 20rpx 0;
 
 			image {
 				width: 100%;
 				height: 100%;
-				border-radius: 50%;
+				border-radius: 60rpx;
+				border: 3px solid #BDC6C3;
 			}
 		}
 	}

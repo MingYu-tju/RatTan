@@ -2,7 +2,18 @@
 	export default {
 		onLaunch: function() {
 			console.log('App Launch')
-			// plus.screen.lockOrientation("portrait-primary")
+			uni.onTabBarMidButtonTap(() => {
+				if (this.globalData.login)
+					uni.navigateTo({
+						url: "/pages/addmessage/addmessage"
+					})
+				else {
+					uni.switchTab({
+						url: "/pages/login/login"
+					})
+				}
+			})
+
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -10,12 +21,23 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-		globalData:{
-			tarbarKey:0
+		globalData: {
+			login: false
 		}
 	}
 </script>
 <style>
 	/*每个页面公共css */
-	@import'components/animate.min.css'
+	@import'components/animate.min.css';
+
+	@font-face {
+		font-family: 'Jost-Medium';
+		src: url("~@/font/Jost-Medium.ttf");
+	}
+
+
+	@font-face {
+		font-family: 'JostBlack';
+		src: url("~@/font/Jost-Black.ttf");
+	}
 </style>

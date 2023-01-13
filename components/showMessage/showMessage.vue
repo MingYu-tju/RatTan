@@ -38,12 +38,18 @@
 		},
 		methods: {
 			gotoDetails() {
-				uni.navigateTo({
-					url: `/pages/details/details?cid=${this.item.Id}`
-				})
+				if (getApp().globalData.login)
+					uni.navigateTo({
+						url: `/pages/details/details?cid=${this.item.Id}`
+					})
+				else {
+					uni.switchTab({
+						url:"/pages/login/login"
+					})
+				}
+				}
 			}
 		}
-	}
 </script>
 
 <style lang="scss">
