@@ -1,13 +1,12 @@
 <template>
-	<view>
 		<view class="box">
+			<image class="back" src="../../static/historyComponent.png"></image>
 			<view class="userImg">
-				<image src="../../static/testimage.png"></image>
+				<image src="/static/testimage.png"></image>
 			</view>
 			<view class="title">{{this.title}}</view>
-			<view class="button" @click="deleteMessage"><text>删除</text></view>
+			<view class="button" @click="deleteMessage"><image src="../../static/delete.png"></image></view>
 		</view>
-	</view>
 </template>
 
 <script>
@@ -15,7 +14,7 @@
 		name: "myhistory",
 		data() {
 			return {
-				title: "这是测试标题这是测试标题测试标"
+				title: "测试标题测试标题测试标题测试标题"
 			};
 		},
 		methods: {
@@ -28,19 +27,24 @@
 
 <style lang="scss">
 	.box {
-		width: 540rpx;
-		height: 140rpx;
-		margin: 40rpx 0;
-		background: linear-gradient(180deg, #969290 0%, #D1D1D1 25%, #D1D1D1 74%, #94908E 100%);
+		width: 592rpx;
+		height: 152rpx;
 		display: flex;
-		justify-content: space-around;
 		align-items: center;
-		border-radius: 40rpx;
+		position: relative;
+		margin: 20rpx 0;
+		.back {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			z-index: -1;
+		}
 
 		.userImg {
-			width: 124rpx;
-			height: 124rpx;
-
+			width: 126rpx;
+			height: 126rpx;
+			position: absolute;
+			left: 34rpx;
 			image {
 				width: 100%;
 				height: 100%;
@@ -50,26 +54,21 @@
 
 		.title {
 			width: 270rpx;
-			font-family: Jost-Regular, Jost;
 			font-weight: 400;
 			color: rgba(0, 0, 0, 0.62);
+			position: absolute;
+			left: 176rpx;
 		}
 
 		.button {
-			width: 76rpx;
-			height: 48rpx;
-			font-size: 30rpx;
-			font-family: Jost-Regular, Jost;
-			font-weight: 400;
-			color: #000000;
-			line-height: 28rpx;
-			background: linear-gradient(90deg, #E2E207 0%, #FFFF71 30%, #FFFF71 71%, #E2E207 100%);
-			box-shadow: 8rpx 0 8rpx 0 rgba(0, 0, 0, 0.2);
-			border-radius: 20rpx;
-			border: 4rpx solid #E3E300;
-			display: flex;
-			justify-content: center;
-			align-items: center;
+			width: 64rpx;
+			height: 64rpx;
+			position: absolute;
+			right: 30rpx;
+			image{
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 </style>

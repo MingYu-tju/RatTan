@@ -1,9 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/about/about",
+    "pages/login/login",
     "pages/addmessage/addmessage",
-    "pages/historymessage/historymessage"
+    "pages/historymessage/historymessage",
+    "pages/details/details",
+    "pages/loginSuccess/loginSuccess",
+    "pages/changeImage/changeImage"
   ],
   "subPackages": [],
   "window": {
@@ -13,20 +16,27 @@
     "backgroundColor": "#F8F8F8"
   },
   "tabBar": {
-    "color": "#8d99a9",
-    "selectedColor": "#00aa00",
+    "color": "#ffffff",
+    "selectedColor": "#000000",
+    "backgroundColor": "#079494",
+    "iconWidth": "33px",
+    "midButton": {
+      "width": "80px",
+      "height": "80px",
+      "backgroundImage": "static/tarbar/send.png"
+    },
     "list": [
       {
-        "text": "原野",
+        "text": "首页",
         "pagePath": "pages/index/index",
-        "iconPath": "static/tarbar/grass.png",
-        "selectedIconPath": "static/tarbar/grass1.png"
+        "iconPath": "static/tarbar/index.png",
+        "selectedIconPath": "static/tarbar/index.png"
       },
       {
-        "text": "我的",
-        "pagePath": "pages/about/about",
-        "iconPath": "static/tarbar/mouse.png",
-        "selectedIconPath": "static/tarbar/mouse1.png"
+        "text": "登录",
+        "pagePath": "pages/login/login",
+        "iconPath": "static/tarbar/my.png",
+        "selectedIconPath": "static/tarbar/my.png"
       }
     ]
   },

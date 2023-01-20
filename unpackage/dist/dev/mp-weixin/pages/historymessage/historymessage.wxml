@@ -1,1 +1,1 @@
-<view><view class="animate__animated animate__fadeInDown"><button type="primary">fas</button></view></view>
+<view><view class="back"></view><view class="historyBox"><view class="box"></view></view><view class="innerbox"><block wx:for="{{10}}" wx:for-item="item" wx:for-index="__i0__"><myhistory vue-id="{{'ade0dd40-1-'+__i0__}}" bind:__l="__l"></myhistory></block></view></view>

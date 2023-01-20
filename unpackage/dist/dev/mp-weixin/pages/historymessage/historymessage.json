@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "历史发言",
   "enablePullDownRefresh": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "myhistory": "/components/myhistory/myhistory"
+  }
 }

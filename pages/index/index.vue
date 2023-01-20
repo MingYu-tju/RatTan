@@ -1,6 +1,6 @@
 <template>
 	<view class="ground">
-
+	<image class="back" src="/"></image>
 		<view class="hist">
 			<view class="history" @click="gotoHistoryPage">
 				<image src="../../static/history.png"></image>
@@ -8,7 +8,7 @@
 		</view>
 
 		<view class="tubebox">
-			<view class="tubebox1">
+			<view class="tubebox1 line1">
 				<view class="tube">
 					<showMessage v-if="show1" :item="item1"></showMessage>
 				</view>
@@ -106,6 +106,7 @@
 			<view class="custom" @click="changeImg">
 				<image src="../../static/testimage.png"></image>
 			</view>
+			<view class="addButton"><image src="../../static/send.png"  @click="addMessage"></image></view>
 		</view>
 	</view>
 
@@ -313,6 +314,16 @@
 </script>
 
 <style lang="scss">
+	.ground{
+		width: 750rpx;
+		height: 1000rpx;
+		.back{
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0;
+		}
+	}
 	.hist {
 		width: 750rpx;
 		height: 140rpx;
@@ -323,8 +334,8 @@
 		align-items: center;
 
 		.history {
-			width: 80rpx;
-			height: 80rpx;
+			width: 100rpx;
+			height: 100rpx;
 			position: absolute;
 			right: 30rpx;
 
@@ -337,7 +348,7 @@
 
 	.tubebox {
 		width: 750rpx;
-		height: 680rpx;
+		height: 580rpx;
 		margin-top: 300rpx;
 		display: flex;
 		flex-direction: column;
@@ -347,13 +358,11 @@
 			flex: 1;
 			display: flex;
 			justify-content: center;
-
 			.tube {
 				width: 140rpx;
 				height: 140rpx;
 				position: relative;
 				border: 1rpx solid black;
-				background-color: #dadada;
 				border-radius: 50%;
 			}
 
@@ -363,7 +372,6 @@
 			flex: 1;
 			display: flex;
 			justify-content: center;
-
 			.tube {
 				width: 140rpx;
 				height: 140rpx;
@@ -377,33 +385,39 @@
 
 	.tail {
 		width: 750rpx;
+		height: 300rpx;
 		position: fixed;
 		bottom: var(--window-bottom);
 		display: flex;
 		justify-content: center;
-		bottom: 90rpx;
+		bottom: 30rpx;
 
 		.custom {
-			width: 200rpx;
-			height: 200rpx;
-			padding: 20rpx 0;
-
+			width: 250rpx;
+			height: 250rpx;
+			position: absolute;
+			left: 100rpx;
+			top: 0;
 			image {
 				width: 100%;
 				height: 100%;
 				border-radius: 60rpx;
 				border: 3px solid #BDC6C3;
+				background-color: #e2ece9;
+			}
+		}
+		.addButton{
+			width: 200rpx;
+			height: 200rpx;
+			position: absolute;
+			right: 100rpx;
+			top: 40rpx;
+			image{
+				width: 100%;
+				height: 100%;
 			}
 		}
 	}
 
-	.say {
-		width: 200rpx;
-		line-height: 1.5em;
-		position: absolute;
-		right: 50rpx;
-		bottom: 64rpx;
-		text-align: center;
-		border-radius: 15rpx;
-	}
+	
 </style>

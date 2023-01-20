@@ -1,1 +1,1 @@
-<view><view class="showBox"><view class="showTitle">{{item.title}}</view><view class="userimg"><image src="{{item.picsrc}}"></image></view></view></view>
+<view data-event-opts="{{[['tap',[['gotoDetails',['$event']]]]]}}" class="{{[activeclass]}}" bindtap="__e"><view class="showBox"><view class="showTitle">{{item.title}}</view><view class="userimg"><image src="{{item.picsrc}}"></image></view></view></view>

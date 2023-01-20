@@ -13,6 +13,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*每个页面公共css */
 @charset "UTF-8";
 /*!
@@ -3698,5 +3712,13 @@ to {
 .animate__slideOutUp {
 	-webkit-animation-name: slideOutUp;
 	animation-name: slideOutUp
+}
+@font-face {
+	font-family: 'Jost-Medium';
+	src: url(/font/Jost-Medium.ttf);
+}
+@font-face {
+	font-family: 'JostBlack';
+	src: url(/font/Jost-Black.ttf);
 }
 

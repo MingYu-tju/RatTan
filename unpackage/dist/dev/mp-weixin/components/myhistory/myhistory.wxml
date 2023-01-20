@@ -1,0 +1,1 @@
+<view><view class="box"><view class="userImg"><image src="../../static/testimage.png"></image></view><view class="title">{{this.title}}</view><view data-event-opts="{{[['tap',[['deleteMessage',['$event']]]]]}}" class="button" bindtap="__e"><text>删除</text></view></view></view>

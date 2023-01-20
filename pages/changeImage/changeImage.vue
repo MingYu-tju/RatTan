@@ -22,16 +22,18 @@
 				</view>
 			</view>
 		</view>
-			<view class="tail animate__animated animate__slideInUp animate__faster">
-				<view class="line"></view>
-				<view class="color">
-					<view>红</view>
-					<view>灰</view>
-					<view>白</view>
-					<view>黑</view>
-				</view>
-				<view class="button">确定</view>
+		<view class="tail animate__animated animate__slideInUp animate__faster">
+			<image class="back" src="../../static/change.png"></image>
+			<view class="color">
+				<view>红</view>
+				<view>灰</view>
+				<view>白</view>
+				<view>黑</view>
 			</view>
+			<view class="button">
+				<image src="../../static/Frame 14@2x.png"></image>
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -149,19 +151,14 @@
 	}
 
 	.tail {
-		width: 738rpx;
-		height: 690rpx;
-		background: linear-gradient(90deg, #D9D9D9 0%, #E5E5E5 25%, #F1F1F1 50%, #E7E7E7 75%, #D9D9D9 100%);
-		border-radius: 60rpx;
-		border: 8rpx solid #D1D1D1;
+		width: 750rpx;
+		height: 703rpx;
 
-		.line {
-			width: 540rpx;
-			height: 0;
+		.back {
+			width: 100%;
+			height: 100%;
+			z-index: -1;
 			position: absolute;
-			top: 92rpx;
-			margin: 0 105rpx;
-			border: 6rpx solid #FFFFFF;
 		}
 
 		.color {
@@ -191,19 +188,14 @@
 		.button {
 			position: absolute;
 			bottom: 140rpx;
-			left: 85rpx;
-			width: 580rpx;
-			height: 100rpx;
-			background: linear-gradient(90deg, #169393 0%, #158B8B 0%, #19ADAD 28%, #1EBDBD 50%, #1AABAB 74%, #168888 100%);
-			border-radius: 38rpx;
-			border: 6rpx solid #1EBDBD;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			font-size: 46rpx;
-			font-family: Inter-Medium, Inter;
-			font-weight: 500;
-			color: #1E2028;
+			left: 185rpx;
+			width: 380rpx;
+			height: 120rpx;
+
+			image {
+				width: 100%;
+				height: 100%;
+			}
 		}
 	}
 </style>

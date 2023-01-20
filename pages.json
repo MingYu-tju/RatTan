@@ -8,88 +8,67 @@
 					"bounce": "none"
 				}
 			}
-		}
-	    ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false,
-				"app-plus": {
-					"bounce": "none"
-				} 
-            }
-            
-        }
-        ,{
-            "path" : "pages/addmessage/addmessage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "发言",
-                "enablePullDownRefresh": false,
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false,
 				"app-plus": {
 					"bounce": "none"
 				}
-            }
-            
-        }
-        ,{
-            "path" : "pages/historymessage/historymessage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "历史发言",
-                "enablePullDownRefresh": false,
+			}
+
+		}, {
+			"path": "pages/addmessage/addmessage",
+			"style": {
+				"navigationBarTitleText": "发言",
+				"enablePullDownRefresh": false,
 				"app-plus": {
 					"bounce": "none"
 				}
-            }
-            
-        }
-        ,{
-            "path" : "pages/details/details",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "详情页",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/loginSuccess/loginSuccess",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/changeImage/changeImage",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false,
+			}
+
+		}, {
+			"path": "pages/historymessage/historymessage",
+			"style": {
+				"navigationBarTitleText": "历史发言",
+				"enablePullDownRefresh": false,
 				"app-plus": {
 					"bounce": "none"
-				} 
-            }
-            
-        }
-    ],
-	"tabBar": {
-		"color": "#ffffff",
-		"selectedColor": "#000000",
-		"backgroundColor": "#079494",
-		"iconWidth": "33px",
-		"midButton": {
-			
-			"width": "80px",
-			"height": "80px",
-			"backgroundImage": "static/tarbar/send.png"
+				}
+
+			}
+
+		}, {
+			"path": "pages/details/details",
+			"style": {
+				"navigationBarTitleText": "详情页",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+
 		},
-		"list": [
-			{
-			    "text": "首页",
+		{
+			"path": "pages/changeImage/changeImage",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false,
+				"app-plus": {
+					"bounce": "none"
+				}
+			}
+
+		}
+	],
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#d6d6d6",
+		"backgroundColor": "#C98899",
+		"iconWidth": "33px",
+		"list": [{
+				"text": "首页",
 				"pagePath": "pages/index/index",
 				"iconPath": "static/tarbar/index.png",
 				"selectedIconPath": "static/tarbar/index.png"
@@ -110,4 +89,3 @@
 	},
 	"uniIdRouter": {}
 }
- 

@@ -33,9 +33,9 @@
 }
 .showTitle {
   width: 300rpx;
-  z-index: 2;
   position: absolute;
   bottom: 160rpx;
+  color: white;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -47,7 +47,6 @@
   position: relative;
 }
 .userimg image {
-  z-index: 3;
   width: 100%;
   height: 100%;
   border-radius: 50%;

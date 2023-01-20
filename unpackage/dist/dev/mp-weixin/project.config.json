@@ -18,9 +18,9 @@
         }
     },
     "compileType": "miniprogram",
-    "libVersion": "2.29.0",
+    "libVersion": "2.29.2",
     "appid": "wx2bee484bc23fe04f",
-    "projectname": "demo1",
+    "projectname": "rat-tan",
     "condition": {},
     "editorSetting": {
         "tabIndent": "insertSpaces",

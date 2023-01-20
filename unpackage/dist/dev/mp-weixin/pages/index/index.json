@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "原野",
+  "navigationBarTitleText": "首页",
   "usingComponents": {
     "show-message": "/components/showMessage/showMessage"
   }

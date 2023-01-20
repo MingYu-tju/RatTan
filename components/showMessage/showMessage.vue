@@ -19,7 +19,7 @@
 					return {
 						Id: null,
 						title: "这是标题这是标题这是标题",
-						picsrc: "../../static/test.jpg"
+						picsrc: "./static/test.png"
 						//../../static/test.jpg
 					}
 				}
@@ -28,12 +28,12 @@
 		},
 		data() {
 			return {
-				activeclass: "animate__animated animate__zoomIn"
+				activeclass: "animate__animated animate__bounceIn"
 			};
 		},
 		created() {
 			setTimeout(e => {
-				this.activeclass = "animate__animated animate__zoomOut"
+				this.activeclass = "animate__animated animate__bounceOut"
 			}, 14200)
 		},
 		methods: {
@@ -44,12 +44,12 @@
 					})
 				else {
 					uni.switchTab({
-						url:"/pages/login/login"
+						url: "/pages/login/login"
 					})
-				}
 				}
 			}
 		}
+	}
 </script>
 
 <style lang="scss">
