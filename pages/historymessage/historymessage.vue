@@ -1,6 +1,7 @@
 <template>
 		<view class="historyBox">
 			<image src="../../static/historyBack.png"></image>
+			<image src="../../static/Frame 16.png" class="temp"></image>
 			<scroll-view class="innerbox" scroll-y="true" refresher-enabled="true">
 				<myhistory v-for="item in 14"></myhistory>
 			</scroll-view>
@@ -32,6 +33,14 @@
 			height: 100%;
 			position: absolute;
 			z-index: -1;
+		}
+		.temp{
+			width: 160rpx;
+			height: 26rpx;
+			position: absolute;
+			z-index: 10;
+			left: 16rpx;
+			bottom: 10rpx;
 		}
 		.innerbox{
 			width: 592rpx;

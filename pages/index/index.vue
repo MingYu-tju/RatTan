@@ -1,112 +1,44 @@
 <template>
 	<view class="ground">
-	<image class="back" src="/"></image>
+		<image class="back" src="/static/background1.png"></image>
 		<view class="hist">
-			<view class="history" @click="gotoHistoryPage">
+			<view class="history" @click="gotoHistoryPage" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
 				<image src="../../static/history.png"></image>
 			</view>
 		</view>
 
 		<view class="tubebox">
-			<view class="tubebox1 line1">
-				<view class="tube">
-					<showMessage v-if="show1" :item="item1"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show2" :item="item2"></showMessage>
-				</view>
+			<view class="tube tube1">
+				<showMessage v-if="show1"></showMessage>
 			</view>
-
-			<view class="tubebox2">
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show3" :item="item3"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
+			<view class="tube tube2">
+				<showMessage v-if="show2" pos="right"></showMessage>
 			</view>
-			<view class="tubebox1">
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show4" :item="item4"></showMessage>
-				</view>
+			<view class="tube tube3">
+				<showMessage v-if="show3"></showMessage>
 			</view>
-			<view class="tubebox2">
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show5" :item="item5"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
+			<view class="tube tube4">
+				<showMessage v-if="show4" pos="right"></showMessage>
 			</view>
-			<view class="tubebox1">
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show6" :item="item6"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="0"></showMessage>
-				</view>
-				<view class="tube">
-					<showMessage v-if="show7" :item="item7"></showMessage>
-				</view>
+			<view class="tube tube5">
+				<showMessage v-if="show5"></showMessage>
+			</view>
+			<view class="tube tube6">
+				<showMessage v-if="show6"></showMessage>
+			</view>
+			<view class="tube tube7">
+				<showMessage v-if="show7" pos="right"></showMessage>
 			</view>
 		</view>
-
 		<view class="tail">
-			<view class="custom" @click="changeImg">
-				<image src="../../static/testimage.png"></image>
+			<view class="custom" @click="gotoChangeImgPage" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+				<image :src="color" v-if="showImg"></image>
+				<image :src="cloth" v-if="showImg"></image>
+				<view v-if="!showImg">未登录</view>
 			</view>
-			<view class="addButton"><image src="../../static/send.png"  @click="addMessage"></image></view>
+			<view class="addButton" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+				<image src="../../static/send.png" @click="gotoAddMessagePage"></image>
+			</view>
 		</view>
 	</view>
 
@@ -116,13 +48,6 @@
 	export default {
 		data() {
 			return {
-				item1: {},
-				item2: {},
-				item3: {},
-				item4: {},
-				item5: {},
-				item6: {},
-				item7: {},
 				show1: 0,
 				show2: 0,
 				show3: 0,
@@ -130,11 +55,14 @@
 				show5: 0,
 				show6: 0,
 				show7: 0,
+				showImg: false,
+				color: "",
+				cloth: ""
 			}
 		},
 		methods: {
 			gotoHistoryPage() {
-				if (getApp().globalData.login)
+				if (getApp().globalData.login) //检查登陆状态，未登录跳转login页面
 					uni.navigateTo({
 						url: "../historymessage/historymessage"
 					})
@@ -144,7 +72,7 @@
 					})
 				}
 			},
-			addMessage() {
+			gotoAddMessagePage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
 						url: "/pages/addmessage/addmessage"
@@ -155,7 +83,7 @@
 					})
 				}
 			},
-			changeImg() {
+			gotoChangeImgPage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
 						url: "/pages/changeImage/changeImage"
@@ -166,164 +94,88 @@
 					})
 				}
 			},
-			getTitle1() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						this.item1 = {
-							Id: res.data.id,
-							title: res.data.title,
-							picsrc: res.data.thumbnailUrl
-						}
-						this.show1 = 1
-						setTimeout(e => {
-							this.show1 = 0
-						}, 15000)
-					}
-				})
+			tube1() { //生成showMessage组件并展示15秒，错开生成时间看起来有随机出现的效果，js单线程，无可奈何的实现方法
+				this.show1 = 1
+				setTimeout(e => this.show1 = 0, 15000)
 			},
-			getTitle2() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item2 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show2 = 1
-							setTimeout(e => this.show2 = 0, 15000)
-						}, 5000)
-
-					}
-				})
-
+			tube2() {
+				setTimeout(e => {
+					this.show2 = 1
+					setTimeout(e => this.show2 = 0, 15000)
+				}, 5000)
 			},
-
-			getTitle3() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item3 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show3 = 1
-							setTimeout(e => this.show3 = 0, 15000)
-						}, 8000)
-
-					}
-				})
+			tube3() {
+				setTimeout(e => {
+					this.show3 = 1
+					setTimeout(e => this.show3 = 0, 15000)
+				}, 8000)
 			},
-			getTitle4() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item4 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show4 = 1
-							setTimeout(e => this.show4 = 0, 15000)
-						}, 13000)
-
-					}
-				})
+			tube4() {
+				setTimeout(e => {
+					this.show4 = 1
+					setTimeout(e => this.show4 = 0, 15000)
+				}, 13000)
 			},
-			getTitle5() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item5 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show5 = 1
-							setTimeout(e => this.show5 = 0, 15000)
-						}, 17000)
-
-					}
-				})
+			tube5() {
+				setTimeout(e => {
+					this.show5 = 1
+					setTimeout(e => this.show5 = 0, 15000)
+				}, 17000)
 			},
-			getTitle6() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item6 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show6 = 1
-							setTimeout(e => this.show6 = 0, 15000)
-						}, 19000)
-
-					}
-				})
+			tube6() {
+				setTimeout(e => {
+					this.show6 = 1
+					setTimeout(e => this.show6 = 0, 15000)
+				}, 19000)
 			},
-			getTitle7() {
-				uni.request({
-					method: 'GET',
-					url: "https://jsonplaceholder.typicode.com/photos/" + Math.floor(Math.random() * 90 + 1),
-					success: res => {
-						setTimeout(e => {
-							this.item7 = {
-								Id: res.data.id,
-								title: res.data.title,
-								picsrc: res.data.thumbnailUrl
-							}
-							this.show7 = 1
-							setTimeout(e => this.show7 = 0, 15000)
-						}, 22000)
-
-					}
-				})
+			tube7() {
+				setTimeout(e => {
+					this.show7 = 1
+					setTimeout(e => this.show7 = 0, 15000)
+				}, 22000)
 			}
 		},
 		onLoad() {
-			this.getTitle1()
-			this.getTitle2()
-			this.getTitle3()
-			this.getTitle4()
-			this.getTitle5()
-			this.getTitle6()
-			this.getTitle7()
-			setInterval(this.getTitle1, 30000)
-			setInterval(this.getTitle2, 25000)
-			setInterval(this.getTitle3, 25000)
-			setInterval(this.getTitle4, 25000)
-			setInterval(this.getTitle5, 25000)
-			setInterval(this.getTitle6, 25000)
-			setInterval(this.getTitle7, 25000)
+			this.tube1() //进入页面先生成一次
+			this.tube2()
+			this.tube3()
+			this.tube4()
+			this.tube5()
+			this.tube6()
+			this.tube7()
+			setInterval(this.tube1, 30000)
+			setInterval(this.tube2, 25000)
+			setInterval(this.tube3, 25000)
+			setInterval(this.tube4, 25000)
+			setInterval(this.tube5, 25000)
+			setInterval(this.tube6, 25000)
+			setInterval(this.tube7, 25000)
+		},
+		onShow() {
+			if (getApp().globalData.login)
+				this.showImg = true
+			else {
+				this.showImg = false
+			}
+			this.color = getApp().globalData.userColor
+			this.cloth = getApp().globalData.userCloth
 		}
 	}
 </script>
 
 <style lang="scss">
-	.ground{
+	.ground {
 		width: 750rpx;
 		height: 1000rpx;
-		.back{
+
+		.back {
 			position: fixed;
 			width: 100%;
 			height: 100%;
 			top: 0;
 		}
 	}
+
 	.hist {
 		width: 750rpx;
 		height: 140rpx;
@@ -348,38 +200,49 @@
 
 	.tubebox {
 		width: 750rpx;
-		height: 580rpx;
-		margin-top: 300rpx;
-		display: flex;
-		flex-direction: column;
-		bounce: none;
+		height: 620rpx;
+		position: relative;
+		top: 370rpx;
 
-		.tubebox1 {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			.tube {
-				width: 140rpx;
-				height: 140rpx;
-				position: relative;
-				border: 1rpx solid black;
-				border-radius: 50%;
-			}
-
+		.tube {
+			width: 140rpx;
+			height: 140rpx;
+			position: absolute;
+			border-radius: 50%;
 		}
 
-		.tubebox2 {
-			flex: 1;
-			display: flex;
-			justify-content: center;
-			.tube {
-				width: 140rpx;
-				height: 140rpx;
-				min-width: 140rpx;
-				position: relative;
-				border: 1rpx solid black;
-				border-radius: 50%;
-			}
+		.tube1 {
+			left: 24rpx;
+		}
+
+		.tube2 {
+			top: 5rpx;
+			right: 18rpx;
+		}
+
+		.tube3 {
+			left: 236rpx;
+			top: 120rpx;
+		}
+
+		.tube4 {
+			top: 242rpx;
+			right: 18rpx;
+		}
+
+		.tube5 {
+			left: 90rpx;
+			top: 356rpx;
+		}
+
+		.tube6 {
+			left: 310rpx;
+			bottom: 0;
+		}
+
+		.tube7 {
+			right: 90rpx;
+			bottom: 120rpx;
 		}
 	}
 
@@ -398,26 +261,44 @@
 			position: absolute;
 			left: 100rpx;
 			top: 0;
+			border: 3px solid #BDC6C3;
+			background-color: #e2ece9;
+			border-radius: 60rpx;
+
 			image {
 				width: 100%;
 				height: 100%;
-				border-radius: 60rpx;
-				border: 3px solid #BDC6C3;
-				background-color: #e2ece9;
+				position: absolute;
+			}
+
+			view {
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 80rpx;
+				font-family: Ipix;
+				font-weight: 500;
 			}
 		}
-		.addButton{
-			width: 200rpx;
-			height: 200rpx;
+
+		.addButton {
+			width: 160rpx;
+			height: 160rpx;
 			position: absolute;
 			right: 100rpx;
-			top: 40rpx;
-			image{
+			top: 50rpx;
+
+			image {
 				width: 100%;
 				height: 100%;
 			}
 		}
 	}
 
-	
+	.hoverButton {
+		opacity: 0.9;
+		transform: scale(0.95, 0.95);
+	}
 </style>

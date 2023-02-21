@@ -55,8 +55,10 @@
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false,
+				"scrollIndicator": "none",
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"scrollIndicator": "none"
 				}
 			}
 
@@ -67,6 +69,7 @@
 		"selectedColor": "#d6d6d6",
 		"backgroundColor": "#C98899",
 		"iconWidth": "33px",
+		"type": "transparent",
 		"list": [{
 				"text": "首页",
 				"pagePath": "pages/index/index",

@@ -22,7 +22,11 @@
 			console.log('App Hide')
 		},
 		globalData: {
-			login: false
+			login: false,
+			userColor:"../../static/color/grey.png",
+			colorId:2,
+			userCloth:"../../static/clothes/c1.png",
+			clothId:1
 		}
 	}
 </script>

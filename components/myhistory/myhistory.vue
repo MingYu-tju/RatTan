@@ -1,12 +1,15 @@
 <template>
-		<view class="box">
-			<image class="back" src="../../static/historyComponent.png"></image>
-			<view class="userImg">
-				<image src="/static/testimage.png"></image>
-			</view>
-			<view class="title">{{this.title}}</view>
-			<view class="button" @click="deleteMessage"><image src="../../static/delete.png"></image></view>
+	<view class="box">
+		<image class="back" src="../../static/historyComponent.png"></image>
+		<view class="userImg">
+			<image :src="color"></image>
+			<image :src="cloth"></image>
 		</view>
+		<view class="title">{{this.title}}</view>
+		<view class="button" @click="deleteMessage">
+			<image src="../../static/delete.png"></image>
+		</view>
+	</view>
 </template>
 
 <script>
@@ -14,13 +17,19 @@
 		name: "myhistory",
 		data() {
 			return {
-				title: "测试标题测试标题测试标题测试标题"
+				title: "测试标题测试标题测试标题测试标题",
+				color: "",
+				cloth: ""
 			};
 		},
-		methods: {
+		methods: { //接口未完成
 			deleteMessage() {
 
 			}
+		},
+		created() { //接口未完成
+			this.color = getApp().globalData.userColor
+			this.cloth = getApp().globalData.userCloth
 		}
 	}
 </script>
@@ -33,6 +42,7 @@
 		align-items: center;
 		position: relative;
 		margin: 20rpx 0;
+
 		.back {
 			width: 100%;
 			height: 100%;
@@ -45,10 +55,12 @@
 			height: 126rpx;
 			position: absolute;
 			left: 34rpx;
+
 			image {
 				width: 100%;
 				height: 100%;
 				border-radius: 50%;
+				position: absolute;
 			}
 		}
 
@@ -65,7 +77,8 @@
 			height: 64rpx;
 			position: absolute;
 			right: 30rpx;
-			image{
+
+			image {
 				width: 100%;
 				height: 100%;
 			}

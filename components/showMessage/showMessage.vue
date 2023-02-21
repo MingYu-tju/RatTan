@@ -1,9 +1,13 @@
 <template>
-	<view :class="activeclass" @click="gotoDetails">
+	<view :class="activeclass" @click="gotoDetailsPage">
 		<view class="showBox">
-			<view class="showTitle">{{item.title}}</view>
-			<view class="userimg">
-				<image :src="item.picsrc"></image>
+			<view :style="showTitle" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+				<image :src="activeBubble" class="bubble"></image>
+				<view class="title">{{title}}</view>
+			</view>
+			<view class="userimg" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+				<image :src="picsrc"></image>
+				<image :src="cloth"></image>
 			</view>
 		</view>
 	</view>
@@ -13,34 +17,56 @@
 	export default {
 		name: "showMessage",
 		props: {
-			item: {
-				type: Object,
-				default () {
-					return {
-						Id: null,
-						title: "这是标题这是标题这是标题",
-						picsrc: "./static/test.png"
-						//../../static/test.jpg
-					}
-				}
-
+			pos: {
+				type: String,
 			}
 		},
 		data() {
 			return {
-				activeclass: "animate__animated animate__bounceIn"
+				activeclass: "animate__animated animate__bounceIn",
+				title: "测试标题测试标题测试标题测试标题",
+				picsrc: "../../static/color/grey.png",
+				cloth: "",
+				messageId: "",
+				activeBubble: "../../static/tBubble1.png",
+				showTitle: {
+					'width': '280rpx',
+					'height': '130rpx',
+					'position': 'absolute',
+					'bottom': '160rpx',
+					'left': '0',
+					'overflow': 'hidden',
+					'text-overflow': 'ellipsis',
+					'font-family': 'Ipix',
+					'font-size': '28rpx'
+				}
 			};
 		},
 		created() {
+			this.cloth = "../../static/clothes/c" + Math.floor(Math.random() * 19 + 1) + ".png" //接口未完成，模拟
+			if (this.pos == "right") { //防止标题框超出屏幕
+				this.showTitle.left = "-160rpx"
+				this.activeBubble = "../../static/tBubble2.png"
+			}
+			uni.request({ //接口未完成
+				method: 'GET',
+				url: "/",
+				success: res => {
+					// this.title = res.data.title
+					// this.picsrc = res.data.thumbnailUrl
+					// this.messageId = res.data.id
+				}
+			})
 			setTimeout(e => {
 				this.activeclass = "animate__animated animate__bounceOut"
 			}, 14200)
 		},
+
 		methods: {
-			gotoDetails() {
+			gotoDetailsPage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
-						url: `/pages/details/details?cid=${this.item.Id}`
+						url: `/pages/details/details?cid=${this.messageId}`
 					})
 				else {
 					uni.switchTab({
@@ -61,15 +87,6 @@
 		align-items: center;
 	}
 
-	.showTitle {
-		width: 300rpx;
-		position: absolute;
-		bottom: 160rpx;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-
 	.userimg {
 		width: 100%;
 		height: 100%;
@@ -79,8 +96,25 @@
 		image {
 			width: 100%;
 			height: 100%;
-			border-radius: 50%;
 			position: absolute;
 		}
+	}
+
+	.bubble {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		z-index: -1;
+	}
+
+	.title {
+		width: 80%;
+		position: absolute;
+		top: 20rpx;
+		left: 25rpx;
+	}
+	.hoverButton {
+		opacity: 0.9;
+		transform: scale(0.95, 0.95);
 	}
 </style>
