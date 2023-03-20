@@ -9,22 +9,26 @@
 			</view>
 			<view class="switch">
 				<view class="color">
-					<view @click="changeColor('red',1)" class="c1" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view @click="changeColor(1)" class="c1" hover-class="hoverButton" hover-stay-time="200"
+						hover-start-time="0">
 						<image v-if="selectedColor==1" src="../../static/left.png"></image>
 					</view>
-					<view @click="changeColor('grey',2)" class="c2" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view @click="changeColor(2)" class="c2" hover-class="hoverButton" hover-stay-time="200"
+						hover-start-time="0">
 						<image v-if="selectedColor==2" src="../../static/left.png"></image>
 					</view>
-					<view @click="changeColor('white',3)" class="c3" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view @click="changeColor(3)" class="c3" hover-class="hoverButton" hover-stay-time="200"
+						hover-start-time="0">
 						<image v-if="selectedColor==3" src="../../static/left.png"></image>
 					</view>
-					<view @click="changeColor('black',4)" class="c4" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view @click="changeColor(4)" class="c4" hover-class="hoverButton" hover-stay-time="200"
+						hover-start-time="0">
 						<image v-if="selectedColor==4" src="../../static/left.png"></image>
 					</view>
 				</view>
 			</view>
 		</view>
-		<view class="tail animate__animated animate__slideInUp animate__faster">
+		<view class="tail animate__animated animate__slideInUp">
 			<image class="back" src="../../static/change.png"></image>
 			<view class="text3">customize it</view>
 			<view class="selectCloth">
@@ -108,6 +112,22 @@
 					<view v-if="selectedCloth==20" class="selected"></view>
 					<view class="clothName">V 我50</view>
 				</view>
+				<view @click="changeCloth(21)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==21" class="selected"></view>
+					<view class="clothName">鼠命休矣</view>
+				</view>
+				<view @click="changeCloth(22)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==22" class="selected"></view>
+					<view class="clothName">土木小鼠</view>
+				</view>
+				<view @click="changeCloth(23)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==23" class="selected"></view>
+					<view class="clothName">侠 鼠 行</view>
+				</view>
+				<view @click="changeCloth(24)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==24" class="selected"></view>
+					<view class="clothName">衣冠禽鼠</view>
+				</view>
 
 			</view>
 			<view class="button" @click="submit" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
@@ -118,6 +138,7 @@
 </template>
 
 <script>
+	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
@@ -131,12 +152,11 @@
 			};
 		},
 		methods: {
-			changeColor(e, a) {
-				//getApp().globalData.userColor = "../../static/color/" + e + ".png"
-				if (this.selectedColor != a) {
-					this.color = "../../static/color/" + e + ".png"
-					this.selectedColor = a
-					this.test1 = Math.random()
+			changeColor(e) {
+				if (this.selectedColor != e) {
+					this.color = "../../static/color/a" + e + ".png"
+					this.selectedColor = e
+					this.test1 = Math.random() //重置动画
 				}
 			},
 			changeCloth(e) {
@@ -147,12 +167,41 @@
 				}
 			},
 			submit() { //请求部分
-				getApp().globalData.userColor = this.color
-				getApp().globalData.userCloth = this.cloth
-				getApp().globalData.colorId = this.selectedColor
-				getApp().globalData.clothId = this.selectedCloth
-				uni.switchTab({
-					url: "/pages/index/index"
+				uni.showLoading({
+					title: "提交中...",
+					mask: true
+				})
+				uni.request({
+					method: "POST",
+					url: BaseUrl + "/user/change",
+					data: {
+						userName: getApp().globalData.userName,
+						colorId: this.selectedColor,
+						clothId: this.clothId
+					},
+					success: (res) => {
+						uni.hideLoading()
+						if (res.data.success) {
+							getApp().globalData.userColor = this.color
+							getApp().globalData.userCloth = this.cloth
+							getApp().globalData.colorId = this.selectedColor
+							getApp().globalData.clothId = this.selectedCloth
+							uni.switchTab({
+								url: "/pages/index/index"
+							})
+						} else {
+							uni.showToast({
+								title: "修改失败！",
+								icon: 'error'
+							})
+						}
+					},
+					fail: () => {
+						uni.showToast({
+							title: "请求失败！",
+							icon: 'error'
+						})
+					}
 				})
 			}
 		},

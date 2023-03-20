@@ -84,6 +84,7 @@
 </template>
 
 <script>
+	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
@@ -95,7 +96,7 @@
 				visible: true,
 				userPassword: "",
 				userPasswordX: "",
-				userName: "直接按登录",
+				userName: "",
 				correct: true,
 				userId: "userName",
 				color: "",
@@ -116,7 +117,7 @@
 				activeClass: "userImg"
 			};
 		},
-		onHide() { //更新key值重置动画，歪门邪道
+		onHide() { //更新key值重置动画
 			this.Key = Math.random()
 			this.show = false
 			this.showX = false
@@ -129,18 +130,69 @@
 		},
 		methods: {
 			login() { //接口未完成
-				getApp().globalData.login = true
-				setTimeout(() => uni.switchTab({
-					url: "/pages/index/index"
-				}), 0)
+				uni.showLoading({
+					title: "登陆中...",
+					mask: true
+				})
+				uni.request({
+					method: "POST",
+					url: BaseUrl + "/user/login",
+					data: {
+						userName: this.userName,
+						userPassword: this.userPassword
+					},
+					success: res => {
+						//接口可调用后删去注释符号
 
-				this.show = false //展示已登录页面
-				this.showX = false
-				this.showS = true
-				// getApp().globalData.userCloth=""
-				// getApp().globalData.userColor=""
-				this.color = getApp().globalData.userColor
-				this.cloth = getApp().globalData.userCloth
+
+						if (res.data.success) {
+							getApp().globalData.colorId = res.data.colorId
+							getApp().globalData.clothId = res.data.clothId
+							getApp().globalData.userName = res.data.userName
+							getApp().globalData.userCloth = "../../static/clothes/c" + res.data.colorId +
+								".png"
+							getApp().globalData.userColor = "../../static/color/a" + res.data.colorId + ".png"
+
+
+							getApp().globalData.login = true
+							this.show = false //展示已登录页面
+							this.showX = false
+							this.showS = true
+							this.color = getApp().globalData.userColor
+							this.cloth = getApp().globalData.userCloth
+							uni.hideLoading()
+
+
+						} else {
+							uni.hideLoading()
+							uni.showToast({
+								title: "用户名或密码错误！",
+								icon: 'error'
+							})
+						}
+
+
+
+					},
+					fail: () => {
+						uni.hideLoading()
+						uni.showToast({
+							title: "请求失败！",
+							icon: 'error'
+						})
+
+						/////////////////////接口可调用后删去
+						getApp().globalData.login = true
+						this.show = false //展示已登录页面
+						this.showX = false
+						this.showS = true
+						this.color = getApp().globalData.userColor
+						this.cloth = getApp().globalData.userCloth
+						uni.hideLoading()
+						//////////////////////
+
+					}
+				})
 			},
 			gotoRegisterPage() {
 				this.showX = true
@@ -167,16 +219,41 @@
 					this.correct = true
 				}
 			},
-			register() { //接口未完成,setTimeOut模拟
+			register() { //接口未完成
 				uni.showLoading({
+					title: "加载中...",
 					mask: true
 				})
-				setTimeout(() => {
-					uni.hideLoading()
-					this.showX = false
-					this.show = true
-				}, 1000)
-
+				uni.request({
+					method: "POST",
+					url: BaseUrl + "/user/register",
+					data: {
+						userName: this.userName,
+						userPassword: this.userPassword
+					},
+					success: res => {
+						if (res.data.success) {
+							uni.hideLoading()
+							uni.showToast({
+								title: "注册成功！"
+							})
+							this.showX = false
+							this.show = true
+						} else {
+							uni.showToast({
+								title: "注册失败！",
+								icon: 'error'
+							})
+						}
+					},
+					fail: () => {
+						uni.hideLoading()
+						uni.showToast({
+							title: "请求失败！",
+							icon: 'error'
+						})
+					}
+				})
 			},
 			signOut() {
 				getApp().globalData.login = 0
@@ -184,7 +261,8 @@
 				this.show = true
 			},
 			cheat() {
-				this.activeClass = "userImg animate__animated animate__" + this.smallCheat[Math.floor(Math.random() * 11)]
+				this.activeClass = "userImg animate__animated animate__" + this.smallCheat[Math.floor(Math
+					.random() * 11)]
 				this.Key = Math.random()
 			}
 		},

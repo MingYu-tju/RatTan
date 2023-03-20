@@ -2,7 +2,8 @@
 	<view class="ground">
 		<image class="back" src="/static/background1.png"></image>
 		<view class="hist">
-			<view class="history" @click="gotoHistoryPage" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+			<view class="history" @click="gotoHistoryPage" hover-class="hoverButton" hover-stay-time="100"
+				hover-start-time="0">
 				<image src="../../static/history.png"></image>
 			</view>
 		</view>
@@ -31,7 +32,8 @@
 			</view>
 		</view>
 		<view class="tail">
-			<view class="custom" @click="gotoChangeImgPage" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+			<view class="custom" @click="gotoChangeImgPage" hover-class="hoverButton" hover-stay-time="100"
+				hover-start-time="0">
 				<image :src="color" v-if="showImg"></image>
 				<image :src="cloth" v-if="showImg"></image>
 				<view v-if="!showImg">未登录</view>
@@ -45,6 +47,7 @@
 </template>
 
 <script>
+	const BaseUrl ="http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
@@ -64,7 +67,9 @@
 			gotoHistoryPage() {
 				if (getApp().globalData.login) //检查登陆状态，未登录跳转login页面
 					uni.navigateTo({
-						url: "../historymessage/historymessage"
+						url: "../historymessage/historymessage",
+						animationType: 'slide-in-top',
+						animationDuration: 600
 					})
 				else {
 					uni.switchTab({
@@ -75,18 +80,22 @@
 			gotoAddMessagePage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
-						url: "/pages/addmessage/addmessage"
+						url: "/pages/addmessage/addmessage",
+						animationType: 'zoom-fade-out',
+						animationDuration: 400
 					})
 				else {
 					uni.switchTab({
-						url: "/pages/login/login"
+						url: "/pages/login/login",
 					})
 				}
 			},
 			gotoChangeImgPage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
-						url: "/pages/changeImage/changeImage"
+						url: "/pages/changeImage/changeImage",
+						animationType: 'slide-in-bottom',
+						animationDuration: 600
 					})
 				else {
 					uni.switchTab({
@@ -94,7 +103,7 @@
 					})
 				}
 			},
-			tube1() { //生成showMessage组件并展示15秒，错开生成时间看起来有随机出现的效果，js单线程，无可奈何的实现方法
+			tube1() { //生成showMessage组件并展示15秒，错开生成时间看起来有随机出现的效果，js单线程，不知道怎么实现真随机出现
 				this.show1 = 1
 				setTimeout(e => this.show1 = 0, 15000)
 			},

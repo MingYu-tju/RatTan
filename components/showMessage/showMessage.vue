@@ -6,7 +6,7 @@
 				<view class="title">{{title}}</view>
 			</view>
 			<view class="userimg" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
-				<image :src="picsrc"></image>
+				<image :src="color"></image>
 				<image :src="cloth"></image>
 			</view>
 		</view>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+	const BaseUrl ="http://101.201.68.134:8199"
 	export default {
 		name: "showMessage",
 		props: {
@@ -25,8 +26,8 @@
 			return {
 				activeclass: "animate__animated animate__bounceIn",
 				title: "测试标题测试标题测试标题测试标题",
-				picsrc: "../../static/color/grey.png",
-				cloth: "",
+				color: "../../static/color/a2.png",
+				cloth: "../../static/clothes/c2.png",
 				messageId: "",
 				activeBubble: "../../static/tBubble1.png",
 				showTitle: {
@@ -43,30 +44,39 @@
 			};
 		},
 		created() {
-			this.cloth = "../../static/clothes/c" + Math.floor(Math.random() * 19 + 1) + ".png" //接口未完成，模拟
 			if (this.pos == "right") { //防止标题框超出屏幕
 				this.showTitle.left = "-160rpx"
 				this.activeBubble = "../../static/tBubble2.png"
 			}
 			uni.request({ //接口未完成
-				method: 'GET',
-				url: "/",
+				method: "POST",
+				url: BaseUrl+"/comment/all",
 				success: res => {
-					// this.title = res.data.title
-					// this.picsrc = res.data.thumbnailUrl
-					// this.messageId = res.data.id
+					
+					
+					//接口可调用时删去注释
+					this.color = "../../static/color/a" + res.data.clothId + ".png"
+				    this.cloth = "../../static/clothes/c" + res.data.colorId + ".png"
+					this.title = res.data.title
+					
+					
+					this.messageId = res.data.messageId
+					setTimeout(e => {
+						this.activeclass = "animate__animated animate__bounceOut"
+					}, 14200)
+				},
+				fail: () => {
 				}
 			})
-			setTimeout(e => {
-				this.activeclass = "animate__animated animate__bounceOut"
-			}, 14200)
 		},
 
 		methods: {
 			gotoDetailsPage() {
 				if (getApp().globalData.login)
 					uni.navigateTo({
-						url: `/pages/details/details?cid=${this.messageId}`
+						url: `/pages/details/details?cid=${this.messageId}`,
+						animationType: 'zoom-fade-out',
+						animationDuration: 600
 					})
 				else {
 					uni.switchTab({
@@ -113,6 +123,7 @@
 		top: 20rpx;
 		left: 25rpx;
 	}
+
 	.hoverButton {
 		opacity: 0.9;
 		transform: scale(0.95, 0.95);

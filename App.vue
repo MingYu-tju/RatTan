@@ -23,7 +23,8 @@
 		},
 		globalData: {
 			login: false,
-			userColor:"../../static/color/grey.png",
+			userName:"",
+			userColor:"../../static/color/a2.png",
 			colorId:2,
 			userCloth:"../../static/clothes/c1.png",
 			clothId:1

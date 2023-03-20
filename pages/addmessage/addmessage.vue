@@ -20,13 +20,15 @@
 			</view>
 		</view>
 
-		<view class="send animate__animated animate__fadeIn" @click="send" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+		<view class="send animate__animated animate__fadeIn" @click="send" hover-class="hoverButton"
+			hover-stay-time="200" hover-start-time="0">
 			<image src="../../static/sendMessage.png"></image>
 		</view>
 	</view>
 </template>
 
 <script>
+	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
@@ -57,28 +59,57 @@
 			},
 			send() { //接口未完成
 				uni.showModal({
+					content: "确定发送？",
 					success: (res) => {
 						if (res.confirm) {
-							this.activeclass1 =
-								"me animate__animated animate__bounceOutUp animate__fast" //动画部分，奇怪的实现方法
-							setTimeout(() => this.activeclass2 =
-								"message animate__animated animate__fadeOutUp animate__faster", 400)
-							setTimeout(() => uni.switchTab({
-								url: "/pages/index/index"
-							}), 700)
+							uni.showLoading({
+								title: "发送中...",
+								mask: true
+							})
+							uni.request({
+								method: "POST",
+								url: BaseUrl + "/comment/add",
+								data: {
+									userName: getApp().globalData.userName,
+									title: this.title,
+									detail: this.detail,
+									colorId: getApp().globalData.colorId,
+									clothId: getApp().globalData.clothId
+								},
+								success: (res) => {
+									uni.hideLoading()
+									if (res.data.success) {
+										this.activeclass1 =
+											"me animate__animated animate__bounceOutUp animate__fast" //动画部分，奇怪的实现方法
+										setTimeout(() => this.activeclass2 =
+											"message animate__animated animate__fadeOutUp animate__faster",
+											400)
+										setTimeout(() => uni.switchTab({
+											url: "/pages/index/index"
+										}), 700)
+									} else {
+										uni.showToast({
+											title: "发送失败！",
+											icon: 'error'
+										})
+									}
+								},
+								fail: () => {
+									uni.showToast({
+										title: "请求失败！",
+										icon: 'error'
+									})
+								}
+							})
 						}
-					},
-					content: "确定发送？"
+					}
 				})
-				//请求部分在这
-
-
 			}
 		},
 		onLoad() {
 			this.activeclass1 = "me animate__animated animate__bounceInDown animate__fast" //动画部分，奇怪的实现方法
 			this.activeclass2 = "message animate__animated animate__fadeInDown animate__faster"
-			this.color=getApp().globalData.userColor
+			this.color = getApp().globalData.userColor
 			this.cloth = getApp().globalData.userCloth
 		}
 	}
@@ -197,8 +228,9 @@
 			height: 100%;
 		}
 	}
-	.hoverButton{
+
+	.hoverButton {
 		opacity: 0.9;
-		transform: scale(0.95,0.95);
+		transform: scale(0.95, 0.95);
 	}
 </style>
