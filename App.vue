@@ -24,9 +24,9 @@
 		globalData: {
 			login: false,
 			userName:"",
-			userColor:"../../static/color/a2.png",
+			userColor:"",
 			colorId:2,
-			userCloth:"../../static/clothes/c1.png",
+			userCloth:"",
 			clothId:1
 		}
 	}

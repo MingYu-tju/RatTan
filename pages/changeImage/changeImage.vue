@@ -138,6 +138,7 @@
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
@@ -174,10 +175,11 @@
 				uni.request({
 					method: "POST",
 					url: BaseUrl + "/user/change",
+					header:{'content-type':'application/x-www-form-urlencoded'},
 					data: {
 						userName: getApp().globalData.userName,
 						colorId: this.selectedColor,
-						clothId: this.clothId
+						clothId: this.selectedCloth
 					},
 					success: (res) => {
 						uni.hideLoading()

@@ -1,11 +1,11 @@
 <template>
-	<view class="box" @click="gotoDetail">
+	<view class="box">
 		<image class="back" src="../../static/historyComponent.png"></image>
-		<view class="userImg">
+		<view class="userImg" @click="gotoDetail">
 			<image :src="color"></image>
 			<image :src="cloth"></image>
 		</view>
-		<view class="title">{{this.title}}</view>
+		<view class="title" @click="gotoDetail">{{this.item.title}}</view>
 		<view class="button" @click="deleteMessage">
 			<image src="../../static/delete.png"></image>
 		</view>
@@ -13,66 +13,80 @@
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		name: "myhistory",
+		props: {
+			item: {
+				type: Object,
+				default () {
+					return {
+						messageId: 0,
+						title: "默认标题",
+						colorId: 1,
+						clothId: 1
+					}
+				}
+			}
+		},
 		data() {
 			return {
-				messageId: 0,
-				title: "测试标题测试标题测试标题测试标题",
 				color: "",
 				cloth: ""
 			};
 		},
 		methods: { //接口未完成
 			deleteMessage() {
-				uni.showLoading({
-					title: "加载中...",
-					mask: true
-				})
-				uni.request({
-					method: "POST",
-					url: BaseUrl + "/comment/history/del",
-					data: {
-						messageId: this.messageId
-					},
+				uni.showModal({
+					content: "确定删除？",
 					success: (res) => {
-						uni.hideLoading()
-						if (res.data.success) {
-							uni.showToast({
-								title: "删除成功！"
+						if (res.confirm) {
+							uni.showLoading({
+								title: "加载中...",
+								mask: true
 							})
-						} else {
-							uni.showToast({
-								title: "删除失败！"
+							uni.request({
+								method: "POST",
+								url: BaseUrl + "/comment/history/delete",
+								header: {
+									'content-type': 'application/x-www-form-urlencoded'
+								},
+								data: {
+									messageId: this.item.messageId
+								},
+								success: (res) => {
+									uni.hideLoading()
+									if (res.data.success) {
+										uni.showToast({
+											title: "删除成功！"
+										})
+										setTimeout(()=>uni.redirectTo({
+											url: "/pages/historymessage/historymessage"
+										}), 1000)
+									} else {
+										uni.showToast({
+											title: "删除失败！"
+										})
+									}
+								},
+								fail: () => {}
 							})
 						}
-					},
-					fail: () => {}
+					}
 				})
 			},
 			gotoDetail() {
 				uni.navigateTo({
-					url: `/pages/details/details?cid=${this.messageId}`,
+					url: `/pages/details/details?cid=${this.item.messageId}`,
 					animationType: 'zoom-fade-out',
 					animationDuration: 600
 				})
 			}
 		},
-		created() { //接口未完成
-			uni.request({
-				method: "POST",
-				url: BaseUrl + "comment/history",
-				data: {
-					userName: getApp().globalData.userName
-				},
-				success: (res) => {
-					this.messageId = res.data.massageId
-					rhis.title = res.data.title
-					this.color = "../../static/color.a" + res.data.colorId + ".png"
-					this.cloth = "../../static/clothed.c" + res.data.clothId + ".png"
-				}
-			})
+		created() {
+			this.color = "../../static/color/a" + this.item.colorId + ".png"
+			this.cloth = "../../static/clothes/c" + this.item.clothId + ".png"
 		}
 	}
 </script>
@@ -113,6 +127,7 @@
 			color: rgba(0, 0, 0, 0.62);
 			position: absolute;
 			left: 176rpx;
+			font-family: Ipix;
 		}
 
 		.button {

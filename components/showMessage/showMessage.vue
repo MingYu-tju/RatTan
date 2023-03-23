@@ -14,7 +14,8 @@
 </template>
 
 <script>
-	const BaseUrl ="http://101.201.68.134:8199"
+	//const BaseUrl ="http://172.23.168.70:8080"
+	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		name: "showMessage",
 		props: {
@@ -25,7 +26,7 @@
 		data() {
 			return {
 				activeclass: "animate__animated animate__bounceIn",
-				title: "测试标题测试标题测试标题测试标题",
+				title: "加载中...",
 				color: "../../static/color/a2.png",
 				cloth: "../../static/clothes/c2.png",
 				messageId: "",
@@ -48,18 +49,13 @@
 				this.showTitle.left = "-160rpx"
 				this.activeBubble = "../../static/tBubble2.png"
 			}
-			uni.request({ //接口未完成
-				method: "POST",
+			uni.request({
+				method: "GET",
 				url: BaseUrl+"/comment/all",
 				success: res => {
-					
-					
-					//接口可调用时删去注释
-					this.color = "../../static/color/a" + res.data.clothId + ".png"
-				    this.cloth = "../../static/clothes/c" + res.data.colorId + ".png"
+					this.color = "../../static/color/a" + res.data.colorId + ".png"
+				    this.cloth = "../../static/clothes/c" + res.data.clothId + ".png"
 					this.title = res.data.title
-					
-					
 					this.messageId = res.data.messageId
 					setTimeout(e => {
 						this.activeclass = "animate__animated animate__bounceOut"

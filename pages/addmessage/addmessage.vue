@@ -14,8 +14,8 @@
 					<input placeholder="Title" maxlength="16" @input="backText"></input>
 				</view>
 				<view class="detail">
-					<textarea maxlength="150" v-model="desc" placeholder="详细内容"></textarea>
-					<view class="num">{{desc.length}}/150</view>
+					<textarea maxlength="150" v-model="detail" placeholder="详细内容"></textarea>
+					<view class="num">{{detail.length}}/150</view>
 				</view>
 			</view>
 		</view>
@@ -28,11 +28,12 @@
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
-				desc: "",
+				detail: "",
 				activeclass1: "",
 				activeclass2: "",
 				title: "福报",
@@ -58,6 +59,13 @@
 				this.title = e.detail.value
 			},
 			send() { //接口未完成
+			if(this.title=="福报"||this.title==""){
+				uni.showToast({
+					title:"总得写点啥吧...",
+					icon:'none'
+				})
+				return;
+			}
 				uni.showModal({
 					content: "确定发送？",
 					success: (res) => {
@@ -69,6 +77,7 @@
 							uni.request({
 								method: "POST",
 								url: BaseUrl + "/comment/add",
+								header:{'content-type':'application/x-www-form-urlencoded'},
 								data: {
 									userName: getApp().globalData.userName,
 									title: this.title,

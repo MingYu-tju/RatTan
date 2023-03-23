@@ -10,7 +10,7 @@
 					<view v-if="show==index||show==(index+1)||show==(index-1)">
 						<view class="detailBox">
 							<image src="../../static/buble.png" class="buble"></image>
-							<view class="detail">{{item.Message}}</view>
+							<view class="detail">{{item.content}}</view>
 						</view>
 						<view class="img">
 							<image :src="item.color"></image>
@@ -26,9 +26,13 @@
 		<view class="replyBox animate__animated animate__fadeIn" v-if="showReplyBox">
 			<view class="closearea" @click="closeReply"></view>
 			<view class="reply animate__animated animate__slideInUp animate__fast">
+				<image src="../../static/Frame 17@2x.png"></image>
 				<view class="replyDetail">
-					<textarea maxlength="150" placeholder="说点什么" v-model="replyMessage"></textarea>
-					<button @click="sendReply">发送</button>
+					<textarea maxlength="150" placeholder="说点什么..." v-model="replyMessage"></textarea>
+					<view @click="sendReply" class="button" hover-class="hoverButton" hover-stay-time="200"
+						hover-start-time="0">
+						<image src="../../static/sendMessage.png"></image>
+					</view>
 				</view>
 			</view>
 		</view>
@@ -36,16 +40,17 @@
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
-				num: 0,
-				show: 0,
+				messageId: 0,
+				show: null,
 				showReplyBox: false,
 				replyMessage: "",
-				options: {
-					initialSlide: 0,
+				options: { //z-swiper插件的配置
+					initialSlide: 100,
 					effect: 'creative',
 					creativeEffect: {
 						prev: {
@@ -57,71 +62,49 @@
 						}
 					}
 				},
-				list: [{
-						Message: `留言5`,
-						color: "../../static/color/a4.png",
-						cloth: "../../static/clothes/c7.png"
-					},
-					{
-						Message: `留言4`,
-						color: "../../static/color/a2.png",
-						cloth: "../../static/clothes/c6.png"
-					},
-					{
-						Message: `留言3`,
-						color: "../../static/color/a3.png",
-						cloth: "../../static/clothes/c5.png"
-					},
-					{
-						Message: `留言2`,
-						color: "../../static/color/a1.png",
-						cloth: "../../static/clothes/c4.png"
-					},
-					{
-						Message: `留言1`,
-						color: "../../static/color/a4.png",
-						cloth: "../../static/clothes/c3.png"
-					},
-					{
-						Message: `此页为消息详细内容，后续右滑为此消息的留言，回复可为该条消息留言`,
-						color: "../../static/color/a2.png",
-						cloth: "../../static/clothes/c1.png"
-					}
-				]
+				list: []
 			};
 		},
-		onLoad(e) {
+		onLoad(e) { //页面加载时发送请求
+			this.messageId = e.cid
 			uni.showLoading({
 				title: "加载中...",
-				mask: true
+				mask: false
 			})
 			uni.request({
 				method: "POST",
-				url: BaseUrl + "/comment/all",
+				url: BaseUrl + "/comment/all/detail",
+				header: {
+					'content-type': 'application/x-www-form-urlencoded'
+				},
 				data: {
-					messageId: e.cid //请求参数
+					messageId: e.cid //请求参数，主页点击的发言编号
 				},
 				success: (res) => {
-
-
-					//接口可调用后删去注释
-					this.list = res.data.commentsList //留言list
+					this.list = [] //轮播图插件的数组
+					for (let i = 0; i < res.data.commentsList.length; i++) { //先添加留言最后再添加详情页
+						this.list.push({
+							content: res.data.commentsList[i].content,
+							color: "../../static/color/a" + res.data.commentsList[i].color + ".png",
+							cloth: "../../static/clothes/c" + res.data.commentsList[i].cloth + ".png"
+						})
+					}
 					this.list.push({
-						Message: res.data.detail,
+						content: res.data.detail,
 						color: "../../static/color/a" + res.data.colorId + ".png",
 						cloth: "../../static/clothes/c" + res.data.clothId + ".png"
 					})
-
-
-					uni.hideLoading()
-					this.options.initialSlide = this.list.length
 					this.show = this.list.length
+					uni.hideLoading()
 				},
 				fail: () => {
 					uni.showToast({
 						title: "请求失败！",
 						icon: 'error'
 					})
+				},
+				complete: () => {
+					uni.hideLoading()
 				}
 			})
 		},
@@ -131,36 +114,44 @@
 			},
 			closeReply() {
 				this.showReplyBox = false;
-				this.replyMessage=""
+				this.replyMessage = ""
 			},
 			sendReply() {
-				uni.showLoading({
-					title: "发送中...",
-					mask: true
-				})
-				uni.request({
-					method: "POST",
-					url: BaseUrl + "/comment/all/detail/reply",
-					data: {
-						messageId: this.messageId,
-						comment: this.replyMessage,
-						colorId: getApp().globalData.colorId,
-						clothId: getApp().globalData.clothId
-					},
-					success: (res) => {
-						uni.hideLoading()
-						uni.showToast({
-							title: "发送成功！"
-						})
-					},
-					fail: () => {
-						uni.hideLoading()
-						uni.showToast({
-							title: "请求失败！",
-							icon: 'error'
-						})
-					}
-				})
+				if (this.replyMessage != "") {
+					uni.showLoading({
+						title: "发送中...",
+						mask: true
+					})
+					uni.request({
+						method: "POST",
+						url: BaseUrl + "/comment/all/detail/reply",
+						header: {
+							'content-type': 'application/x-www-form-urlencoded'
+						},
+						data: {
+							messageId: this.messageId,
+							comment: this.replyMessage,
+							colorId: getApp().globalData.colorId,
+							clothId: getApp().globalData.clothId
+						},
+						success: (res) => {
+							uni.hideLoading()
+							uni.showToast({
+								title: "发送成功！"
+							})
+							setTimeout(() => uni.redirectTo({
+								url: `/pages/details/details?cid=${this.messageId}`
+							}), 1000)
+						},
+						fail: () => {
+							uni.hideLoading()
+							uni.showToast({
+								title: "请求失败！",
+								icon: 'error'
+							})
+						}
+					})
+				}
 			},
 			onChange(swiper, index) {
 				this.show = index
@@ -307,10 +298,17 @@
 			bottom: 0;
 			background-color: white;
 
+			image {
+				width: 100%;
+				height: 100%;
+				z-index: 0;
+				position: absolute;
+			}
+
 			.replyDetail {
 				width: 750rpx;
 				height: 500rpx;
-				margin-top: 50rpx;
+				margin-top: 40rpx;
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -318,16 +316,25 @@
 
 				textarea {
 					width: 600rpx;
-					height: 500rpx;
+					height: 450rpx;
 					background-color: #e4e4e4;
 					font-family: Ipix;
+					border-radius: 10rpx;
 				}
 
-				button {
+				.button {
 					width: 300rpx;
-					height: 100rpx;
-					margin-top: 50rpx;
+					height: 80rpx;
 					background-color: palegoldenrod;
+					position: absolute;
+					bottom: 80rpx;
+
+					image {
+						width: 100%;
+						height: 100%;
+						position: absolute;
+						z-index: 0;
+					}
 				}
 			}
 		}

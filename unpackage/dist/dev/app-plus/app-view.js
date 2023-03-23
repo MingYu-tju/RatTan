@@ -1337,7 +1337,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.ground {\r\n  width: 750rpx;\r\n  height: 1000rpx;\n}\n.ground .back {\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\n}\n.hist {\r\n  width: 750rpx;\r\n  height: 140rpx;\r\n  position: fixed;\r\n  top: var(--window-top);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\n}\n.hist .history {\r\n  width: 100rpx;\r\n  height: 100rpx;\r\n  position: absolute;\r\n  right: 30rpx;\n}\n.hist .history uni-image {\r\n  width: 100%;\r\n  height: 100%;\n}\n.tubebox {\r\n  width: 750rpx;\r\n  height: 620rpx;\r\n  position: relative;\r\n  top: 370rpx;\n}\n.tubebox .tube {\r\n  width: 140rpx;\r\n  height: 140rpx;\r\n  position: absolute;\r\n  border-radius: 50%;\n}\n.tubebox .tube1 {\r\n  left: 24rpx;\n}\n.tubebox .tube2 {\r\n  top: 5rpx;\r\n  right: 18rpx;\n}\n.tubebox .tube3 {\r\n  left: 236rpx;\r\n  top: 120rpx;\n}\n.tubebox .tube4 {\r\n  top: 242rpx;\r\n  right: 18rpx;\n}\n.tubebox .tube5 {\r\n  left: 90rpx;\r\n  top: 356rpx;\n}\n.tubebox .tube6 {\r\n  left: 310rpx;\r\n  bottom: 0;\n}\n.tubebox .tube7 {\r\n  right: 90rpx;\r\n  bottom: 120rpx;\n}\n.tail {\r\n  width: 750rpx;\r\n  height: 300rpx;\r\n  position: fixed;\r\n  bottom: var(--window-bottom);\r\n  display: flex;\r\n  justify-content: center;\r\n  bottom: 30rpx;\n}\n.tail .custom {\r\n  width: 250rpx;\r\n  height: 250rpx;\r\n  position: absolute;\r\n  left: 100rpx;\r\n  top: 0;\r\n  border: 3px solid #BDC6C3;\r\n  background-color: #e2ece9;\r\n  border-radius: 60rpx;\n}\n.tail .custom uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\n}\n.tail .custom uni-view {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 80rpx;\r\n  font-family: Ipix;\r\n  font-weight: 500;\n}\n.tail .addButton {\r\n  width: 160rpx;\r\n  height: 160rpx;\r\n  position: absolute;\r\n  right: 100rpx;\r\n  top: 50rpx;\n}\n.tail .addButton uni-image {\r\n  width: 100%;\r\n  height: 100%;\n}\n.hoverButton {\r\n  opacity: 0.9;\r\n  -webkit-transform: scale(0.95, 0.95);\r\n          transform: scale(0.95, 0.95);\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.ground {\r\n  width: 750rpx;\r\n  height: 1395rpx;\n}\n.ground .back {\r\n  position: absolute;\r\n  width: 100%;\r\n  height: 100%;\r\n  top: 0;\n}\n.hist {\r\n  width: 750rpx;\r\n  height: 140rpx;\r\n  position: fixed;\r\n  top: var(--window-top);\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  z-index: 3;\n}\n.hist .history {\r\n  width: 100rpx;\r\n  height: 100rpx;\r\n  position: absolute;\r\n  right: 30rpx;\n}\n.hist .history uni-image {\r\n  width: 100%;\r\n  height: 100%;\n}\n.tubebox {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\n}\n.tubebox .tube {\r\n  width: 140rpx;\r\n  height: 140rpx;\r\n  position: absolute;\r\n  border-radius: 50%;\n}\n.tubebox .tube1 {\r\n  top: 375rpx;\r\n  left: 24rpx;\n}\n.tubebox .tube2 {\r\n  top: 380rpx;\r\n  right: 18rpx;\n}\n.tubebox .tube3 {\r\n  left: 236rpx;\r\n  top: 495rpx;\n}\n.tubebox .tube4 {\r\n  top: 617rpx;\r\n  right: 18rpx;\n}\n.tubebox .tube5 {\r\n  left: 90rpx;\r\n  top: 731rpx;\n}\n.tubebox .tube6 {\r\n  left: 310rpx;\r\n  bottom: 420rpx;\n}\n.tubebox .tube7 {\r\n  right: 90rpx;\r\n  bottom: 540rpx;\n}\n.tail {\r\n  width: 750rpx;\r\n  height: 300rpx;\r\n  position: fixed;\r\n  bottom: var(--window-bottom);\r\n  display: flex;\r\n  justify-content: center;\r\n  bottom: 30rpx;\n}\n.tail .custom {\r\n  width: 250rpx;\r\n  height: 250rpx;\r\n  position: absolute;\r\n  left: 100rpx;\r\n  top: 0;\r\n  border: 3px solid #BDC6C3;\r\n  background-color: #e2ece9;\r\n  border-radius: 60rpx;\n}\n.tail .custom uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\n}\n.tail .custom uni-view {\r\n  width: 100%;\r\n  height: 100%;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  font-size: 80rpx;\r\n  font-family: Ipix;\r\n  font-weight: 500;\n}\n.tail .addButton {\r\n  width: 160rpx;\r\n  height: 160rpx;\r\n  position: absolute;\r\n  right: 100rpx;\r\n  top: 50rpx;\n}\n.tail .addButton uni-image {\r\n  width: 100%;\r\n  height: 100%;\n}\n.hoverButton {\r\n  opacity: 0.9;\r\n  -webkit-transform: scale(0.95, 0.95);\r\n          transform: scale(0.95, 0.95);\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -1658,6 +1658,13 @@ var render = function () {
                               placeholder: "请输入用户名",
                               "placeholder-class": "plc",
                               _i: 25,
+                            },
+                            model: {
+                              value: _vm._$g(25, "v-model"),
+                              callback: function ($$v) {
+                                _vm.$handleVModelEvent(25, $$v)
+                              },
+                              expression: "userName",
                             },
                           }),
                         ],
@@ -2174,7 +2181,7 @@ var render = function () {
                       callback: function ($$v) {
                         _vm.$handleVModelEvent(13, $$v)
                       },
-                      expression: "desc",
+                      expression: "detail",
                     },
                   }),
                   _c(
@@ -2435,7 +2442,12 @@ var render = function () {
           },
         },
         _vm._l(_vm._$g(4, "f"), function (item, $10, $20, $30) {
-          return _c("myhistory", { key: item, attrs: { _i: "4-" + $30 } })
+          return _c(
+            "uni-view",
+            { key: item, attrs: { _i: "4-" + $30 } },
+            [_c("myhistory", { attrs: { _i: "5-" + $30 } })],
+            1
+          )
         }),
         1
       ),
@@ -2531,15 +2543,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "uni-view",
-    {
-      staticClass: _vm._$g(0, "sc"),
-      attrs: { _i: 0 },
-      on: {
-        click: function ($event) {
-          return _vm.$handleViewEvent($event)
-        },
-      },
-    },
+    { staticClass: _vm._$g(0, "sc"), attrs: { _i: 0 } },
     [
       _c("v-uni-image", {
         staticClass: _vm._$g(1, "sc"),
@@ -2547,16 +2551,34 @@ var render = function () {
       }),
       _c(
         "uni-view",
-        { staticClass: _vm._$g(2, "sc"), attrs: { _i: 2 } },
+        {
+          staticClass: _vm._$g(2, "sc"),
+          attrs: { _i: 2 },
+          on: {
+            click: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+          },
+        },
         [
           _c("v-uni-image", { attrs: { src: _vm._$g(3, "a-src"), _i: 3 } }),
           _c("v-uni-image", { attrs: { src: _vm._$g(4, "a-src"), _i: 4 } }),
         ],
         1
       ),
-      _c("uni-view", { staticClass: _vm._$g(5, "sc"), attrs: { _i: 5 } }, [
-        _vm._v(_vm._$g(5, "t0-0")),
-      ]),
+      _c(
+        "uni-view",
+        {
+          staticClass: _vm._$g(5, "sc"),
+          attrs: { _i: 5 },
+          on: {
+            click: function ($event) {
+              return _vm.$handleViewEvent($event)
+            },
+          },
+        },
+        [_vm._v(_vm._$g(5, "t0-0"))]
+      ),
       _c(
         "uni-view",
         {
@@ -2613,6 +2635,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 var _default = {
   name: "myhistory",
+  props: ["item"],
   data: function data() {
     return {
       wxsProps: {}
@@ -2670,7 +2693,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.box[data-v-882f5bd4] {\r\n  width: 592rpx;\r\n  height: 152rpx;\r\n  display: flex;\r\n  align-items: center;\r\n  position: relative;\r\n  margin: 20rpx 0;\n}\n.box .back[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.box .userImg[data-v-882f5bd4] {\r\n  width: 126rpx;\r\n  height: 126rpx;\r\n  position: absolute;\r\n  left: 34rpx;\n}\n.box .userImg uni-image[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 50%;\r\n  position: absolute;\n}\n.box .title[data-v-882f5bd4] {\r\n  width: 270rpx;\r\n  font-weight: 400;\r\n  color: rgba(0, 0, 0, 0.62);\r\n  position: absolute;\r\n  left: 176rpx;\n}\n.box .button[data-v-882f5bd4] {\r\n  width: 64rpx;\r\n  height: 64rpx;\r\n  position: absolute;\r\n  right: 30rpx;\n}\n.box .button uni-image[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.box[data-v-882f5bd4] {\r\n  width: 592rpx;\r\n  height: 152rpx;\r\n  display: flex;\r\n  align-items: center;\r\n  position: relative;\r\n  margin: 20rpx 0;\n}\n.box .back[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.box .userImg[data-v-882f5bd4] {\r\n  width: 126rpx;\r\n  height: 126rpx;\r\n  position: absolute;\r\n  left: 34rpx;\n}\n.box .userImg uni-image[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\r\n  border-radius: 50%;\r\n  position: absolute;\n}\n.box .title[data-v-882f5bd4] {\r\n  width: 270rpx;\r\n  font-weight: 400;\r\n  color: rgba(0, 0, 0, 0.62);\r\n  position: absolute;\r\n  left: 176rpx;\r\n  font-family: Ipix;\n}\n.box .button[data-v-882f5bd4] {\r\n  width: 64rpx;\r\n  height: 64rpx;\r\n  position: absolute;\r\n  right: 30rpx;\n}\n.box .button uni-image[data-v-882f5bd4] {\r\n  width: 100%;\r\n  height: 100%;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -3028,35 +3051,49 @@ var render = function () {
                 "uni-view",
                 { staticClass: _vm._$g(20, "sc"), attrs: { _i: 20 } },
                 [
+                  _c("v-uni-image", {
+                    attrs: { src: _vm._$g(21, "a-src"), _i: 21 },
+                  }),
                   _c(
                     "uni-view",
-                    { staticClass: _vm._$g(21, "sc"), attrs: { _i: 21 } },
+                    { staticClass: _vm._$g(22, "sc"), attrs: { _i: 22 } },
                     [
                       _c("v-uni-textarea", {
                         attrs: {
                           maxlength: "150",
-                          placeholder: "说点什么",
-                          _i: 22,
+                          placeholder: "说点什么...",
+                          _i: 23,
                         },
                         model: {
-                          value: _vm._$g(22, "v-model"),
+                          value: _vm._$g(23, "v-model"),
                           callback: function ($$v) {
-                            _vm.$handleVModelEvent(22, $$v)
+                            _vm.$handleVModelEvent(23, $$v)
                           },
                           expression: "replyMessage",
                         },
                       }),
                       _c(
-                        "v-uni-button",
+                        "uni-view",
                         {
-                          attrs: { _i: 23 },
+                          staticClass: _vm._$g(24, "sc"),
+                          attrs: {
+                            "hover-class": "hoverButton",
+                            "hover-stay-time": "200",
+                            "hover-start-time": "0",
+                            _i: 24,
+                          },
                           on: {
                             click: function ($event) {
                               return _vm.$handleViewEvent($event)
                             },
                           },
                         },
-                        [_vm._v("发送")]
+                        [
+                          _c("v-uni-image", {
+                            attrs: { src: _vm._$g(25, "a-src"), _i: 25 },
+                          }),
+                        ],
+                        1
                       ),
                     ],
                     1
@@ -3936,7 +3973,7 @@ if(false) {}
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ./node_modules/css-loader/dist/runtime/api.js */ 13);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.back {\r\n  z-index: 0;\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: fixed;\n}\n.water {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  z-index: 0;\r\n  position: fixed;\n}\n.marshroom1 {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: absolute;\r\n  z-index: 3;\n}\n.marshroom2 {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  z-index: 0;\r\n  position: fixed;\r\n  right: 0;\n}\n.box {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  background: #e4e4e4;\r\n  position: relative;\n}\n.box .all {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: relative;\n}\n.box .all .detailBox {\r\n  width: 618rpx;\r\n  height: 620rpx;\r\n  position: absolute;\r\n  top: 140rpx;\r\n  left: 66rpx;\r\n  display: flex;\r\n  justify-content: center;\n}\n.box .all .detailBox .detail {\r\n  width: 570rpx;\r\n  height: 400rpx;\r\n  font-family: Ipix;\r\n  font-size: 35rpx;\r\n  position: relative;\r\n  top: 50rpx;\n}\n.box .all .detailBox .buble {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.box .all .img {\r\n  width: 460rpx;\r\n  height: 520rpx;\r\n  position: absolute;\r\n  left: 160rpx;\r\n  bottom: 200rpx;\n}\n.box .all .img uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\n}\n.box .button {\r\n  z-index: 2;\r\n  position: absolute;\r\n  right: 80rpx;\r\n  bottom: 80rpx;\r\n  width: 400rpx;\r\n  height: 96rpx;\r\n  font-size: 38rpx;\r\n  font-family: Ipix;\r\n  font-weight: 500;\r\n  color: #000000;\r\n  line-height: 28rpx;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\n}\n.box .button uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.hoverButton {\r\n  opacity: 0.9;\r\n  -webkit-transform: scale(0.95, 0.95);\r\n          transform: scale(0.95, 0.95);\n}\n.replyBox {\r\n  width: 750rpx;\r\n  height: 1600rpx;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  background-color: rgba(255, 255, 255, 0.3);\n}\n.replyBox .closearea {\r\n  position: absolute;\r\n  width: 750rpx;\r\n  height: 1100rpx;\r\n  top: 0;\n}\n.replyBox .reply {\r\n  width: 750rpx;\r\n  height: 600rpx;\r\n  position: absolute;\r\n  bottom: 0;\r\n  background-color: white;\n}\n.replyBox .reply .replyDetail {\r\n  width: 750rpx;\r\n  height: 500rpx;\r\n  margin-top: 50rpx;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\n}\n.replyBox .reply .replyDetail uni-textarea {\r\n  width: 600rpx;\r\n  height: 500rpx;\r\n  background-color: #e4e4e4;\r\n  font-family: Ipix;\n}\n.replyBox .reply .replyDetail uni-button {\r\n  width: 300rpx;\r\n  height: 100rpx;\r\n  margin-top: 50rpx;\r\n  background-color: palegoldenrod;\n}\r\n", ""]);
+exports.push([module.i, "@charset \"UTF-8\";\r\n/**\r\n * 这里是uni-app内置的常用样式变量\r\n *\r\n * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量\r\n * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App\r\n *\r\n */\r\n/**\r\n * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能\r\n *\r\n * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件\r\n */\r\n/* 颜色变量 */\r\n/* 行为相关颜色 */\r\n/* 文字基本颜色 */\r\n/* 背景颜色 */\r\n/* 边框颜色 */\r\n/* 尺寸变量 */\r\n/* 文字尺寸 */\r\n/* 图片尺寸 */\r\n/* Border Radius */\r\n/* 水平间距 */\r\n/* 垂直间距 */\r\n/* 透明度 */\r\n/* 文章场景相关 */\n.back {\r\n  z-index: 0;\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: fixed;\n}\n.water {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  z-index: 0;\r\n  position: fixed;\n}\n.marshroom1 {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: absolute;\r\n  z-index: 3;\n}\n.marshroom2 {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  z-index: 0;\r\n  position: fixed;\r\n  right: 0;\n}\n.box {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  background: #e4e4e4;\r\n  position: relative;\n}\n.box .all {\r\n  width: 750rpx;\r\n  height: 1500rpx;\r\n  position: relative;\n}\n.box .all .detailBox {\r\n  width: 618rpx;\r\n  height: 620rpx;\r\n  position: absolute;\r\n  top: 140rpx;\r\n  left: 66rpx;\r\n  display: flex;\r\n  justify-content: center;\n}\n.box .all .detailBox .detail {\r\n  width: 570rpx;\r\n  height: 400rpx;\r\n  font-family: Ipix;\r\n  font-size: 35rpx;\r\n  position: relative;\r\n  top: 50rpx;\n}\n.box .all .detailBox .buble {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.box .all .img {\r\n  width: 460rpx;\r\n  height: 520rpx;\r\n  position: absolute;\r\n  left: 160rpx;\r\n  bottom: 200rpx;\n}\n.box .all .img uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\n}\n.box .button {\r\n  z-index: 2;\r\n  position: absolute;\r\n  right: 80rpx;\r\n  bottom: 80rpx;\r\n  width: 400rpx;\r\n  height: 96rpx;\r\n  font-size: 38rpx;\r\n  font-family: Ipix;\r\n  font-weight: 500;\r\n  color: #000000;\r\n  line-height: 28rpx;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\n}\n.box .button uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: -1;\n}\n.hoverButton {\r\n  opacity: 0.9;\r\n  -webkit-transform: scale(0.95, 0.95);\r\n          transform: scale(0.95, 0.95);\n}\n.replyBox {\r\n  width: 750rpx;\r\n  height: 1600rpx;\r\n  position: absolute;\r\n  bottom: 0;\r\n  z-index: 100;\r\n  background-color: rgba(255, 255, 255, 0.3);\n}\n.replyBox .closearea {\r\n  position: absolute;\r\n  width: 750rpx;\r\n  height: 1100rpx;\r\n  top: 0;\n}\n.replyBox .reply {\r\n  width: 750rpx;\r\n  height: 600rpx;\r\n  position: absolute;\r\n  bottom: 0;\r\n  background-color: white;\n}\n.replyBox .reply uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  z-index: 0;\r\n  position: absolute;\n}\n.replyBox .reply .replyDetail {\r\n  width: 750rpx;\r\n  height: 500rpx;\r\n  margin-top: 40rpx;\r\n  display: flex;\r\n  justify-content: center;\r\n  align-items: center;\r\n  flex-direction: column;\n}\n.replyBox .reply .replyDetail uni-textarea {\r\n  width: 600rpx;\r\n  height: 450rpx;\r\n  background-color: #e4e4e4;\r\n  font-family: Ipix;\r\n  border-radius: 10rpx;\n}\n.replyBox .reply .replyDetail .button {\r\n  width: 300rpx;\r\n  height: 80rpx;\r\n  background-color: palegoldenrod;\r\n  position: absolute;\r\n  bottom: 80rpx;\n}\n.replyBox .reply .replyDetail .button uni-image {\r\n  width: 100%;\r\n  height: 100%;\r\n  position: absolute;\r\n  z-index: 0;\n}\r\n", ""]);
 // Exports
 module.exports = exports;
 

@@ -3,30 +3,38 @@
 		<image src="../../static/historyBack.png"></image>
 		<image src="../../static/Frame 16.png" class="temp"></image>
 		<scroll-view class="innerbox" scroll-y="true" refresher-enabled="true" @refresherrefresh="refresh">
-			<myhistory v-for="item in length"></myhistory>
+			<view v-for="item in list">
+				<myhistory :item="item"></myhistory>
+			</view>
 		</scroll-view>
 	</view>
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
-				length: 0
+				list:[]
 			};
 		},
 		methods: {
-			onload() {
+			onLoad() {
 				uni.showLoading({
 					title: "加载中...",
 					mask: true
 				})
 				uni.request({
 					method: "POST",
-					url: BaseUrl + "comment/history",
+					url: BaseUrl + "/comment/history",
+					header:{'content-type':'application/x-www-form-urlencoded'},
+					data:{
+						userName:getApp().globalData.userName
+					},
 					success: (res) => {
-						this.length = res.data.length
+						console.log(res);
+						this.list=res.data.historyList
 						uni.hideLoading()
 					}
 				})

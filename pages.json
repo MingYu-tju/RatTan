@@ -5,7 +5,10 @@
 			"style": {
 				"navigationBarTitleText": "首页",
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899"
+					}
 				}
 			}
 		}, {
@@ -14,7 +17,10 @@
 				"navigationBarTitleText": "登录",
 				"enablePullDownRefresh": false,
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899"
+					}
 				}
 			}
 
@@ -24,7 +30,13 @@
 				"navigationBarTitleText": "发言",
 				"enablePullDownRefresh": false,
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899",
+						"backButton": {
+							"fontWeight": "bold"
+						}
+					}
 				}
 			}
 
@@ -34,7 +46,13 @@
 				"navigationBarTitleText": "历史发言",
 				"enablePullDownRefresh": false,
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899",
+						"backButton": {
+							"fontWeight": "bold"
+						}
+					}
 				}
 			}
 
@@ -44,7 +62,13 @@
 				"navigationBarTitleText": "详情页",
 				"enablePullDownRefresh": false,
 				"app-plus": {
-					"bounce": "none"
+					"bounce": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899",
+						"backButton": {
+							"fontWeight": "bold"
+						}
+					}
 				}
 			}
 
@@ -57,7 +81,13 @@
 				"scrollIndicator": "none",
 				"app-plus": {
 					"bounce": "none",
-					"scrollIndicator": "none"
+					"scrollIndicator": "none",
+					"titleNView": {
+						"backgroundColor": "#C98899",
+						"backButton": {
+							"fontWeight": "bold"
+						}
+					}
 				}
 			}
 

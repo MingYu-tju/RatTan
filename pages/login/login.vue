@@ -38,7 +38,8 @@
 				<view class="form">
 					<view class="input-text">
 						<view class="title">用户名</view>
-						<input type="text" class="userName" placeholder="请输入用户名" placeholder-class="plc">
+						<input type="text" class="userName" placeholder="请输入用户名" placeholder-class="plc"
+							v-model="userName">
 					</view>
 					<view class="input-text">
 						<view class="title">密码</view>
@@ -70,7 +71,7 @@
 
 		<view class="loginSuccess" v-if="showS">
 			<image src="../../static/loginSuccessBack.png" class="loginSuccessBack"></image>
-			<view class="ydl">{{userId}}，已登录！</view>
+			<view class="ydl">{{userName}}，已登录！</view>
 			<view :class="activeClass" @click="cheat" :key="Key">
 				<image :src="color"></image>
 				<image :src="cloth"></image>
@@ -84,6 +85,7 @@
 </template>
 
 <script>
+	//const BaseUrl = "http://172.23.168.70:8080"
 	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
@@ -129,7 +131,7 @@
 			this.cloth = getApp().globalData.userCloth
 		},
 		methods: {
-			login() { //接口未完成
+			login() {
 				uni.showLoading({
 					title: "登陆中...",
 					mask: true
@@ -137,23 +139,21 @@
 				uni.request({
 					method: "POST",
 					url: BaseUrl + "/user/login",
+					header: {
+						'content-type': 'application/x-www-form-urlencoded'
+					},
 					data: {
 						userName: this.userName,
 						userPassword: this.userPassword
 					},
 					success: res => {
-						//接口可调用后删去注释符号
-
-
-						if (res.data.success) {
+						if (res.data.success == 'true') {
 							getApp().globalData.colorId = res.data.colorId
 							getApp().globalData.clothId = res.data.clothId
 							getApp().globalData.userName = res.data.userName
-							getApp().globalData.userCloth = "../../static/clothes/c" + res.data.colorId +
+							getApp().globalData.userCloth = "../../static/clothes/c" + res.data.clothId +
 								".png"
 							getApp().globalData.userColor = "../../static/color/a" + res.data.colorId + ".png"
-
-
 							getApp().globalData.login = true
 							this.show = false //展示已登录页面
 							this.showX = false
@@ -161,18 +161,13 @@
 							this.color = getApp().globalData.userColor
 							this.cloth = getApp().globalData.userCloth
 							uni.hideLoading()
-
-
 						} else {
 							uni.hideLoading()
 							uni.showToast({
 								title: "用户名或密码错误！",
-								icon: 'error'
+								icon: 'none'
 							})
 						}
-
-
-
 					},
 					fail: () => {
 						uni.hideLoading()
@@ -180,23 +175,15 @@
 							title: "请求失败！",
 							icon: 'error'
 						})
-
-						/////////////////////接口可调用后删去
-						getApp().globalData.login = true
-						this.show = false //展示已登录页面
-						this.showX = false
-						this.showS = true
-						this.color = getApp().globalData.userColor
-						this.cloth = getApp().globalData.userCloth
-						uni.hideLoading()
-						//////////////////////
-
 					}
 				})
 			},
 			gotoRegisterPage() {
 				this.showX = true
 				this.show = false
+				this.userName = ""
+				this.userPassword = ""
+				this.userPasswordX = ""
 			},
 			eye() { //密码是否可见
 				this.bool = !this.bool
@@ -219,46 +206,67 @@
 					this.correct = true
 				}
 			},
-			register() { //接口未完成
-				uni.showLoading({
-					title: "加载中...",
-					mask: true
-				})
-				uni.request({
-					method: "POST",
-					url: BaseUrl + "/user/register",
-					data: {
-						userName: this.userName,
-						userPassword: this.userPassword
-					},
-					success: res => {
-						if (res.data.success) {
+			register() {
+				if (this.userPassword == this.userPasswordX&&this.userName!="") {
+					uni.showLoading({
+						title: "加载中...",
+						mask: true
+					})
+					uni.request({
+						method: "POST",
+						url: BaseUrl + "/user/register",
+						header: {
+							'content-type': 'application/x-www-form-urlencoded'
+						},
+						data: {
+							userName: this.userName,
+							userPassword: this.userPassword
+						},
+						success: res => {
+							if (res.data.success == 'true') {
+								uni.hideLoading()
+								uni.showToast({
+									title: "注册成功！"
+								})
+								this.showX = false
+								this.show = true
+							} else {
+								uni.showToast({
+									title: "该用户名已被注册！",
+									icon: 'none'
+								})
+							}
+						},
+						fail: () => {
 							uni.hideLoading()
 							uni.showToast({
-								title: "注册成功！"
-							})
-							this.showX = false
-							this.show = true
-						} else {
-							uni.showToast({
-								title: "注册失败！",
+								title: "请求失败！",
 								icon: 'error'
 							})
 						}
-					},
-					fail: () => {
-						uni.hideLoading()
-						uni.showToast({
-							title: "请求失败！",
-							icon: 'error'
-						})
-					}
-				})
+					})
+				}
+				else{
+					uni.showToast({
+						title:"请检查用户名或密码输入",
+						icon:'none'
+					})
+				}
 			},
 			signOut() {
-				getApp().globalData.login = 0
-				this.showS = false
-				this.show = true
+				uni.showModal({
+					content: "确认退出？",
+					success: (res) => {
+						if (res.confirm) {
+							getApp().globalData.login = 0
+							this.showS = false
+							this.show = true
+							this.userName = ""
+							this.userPassword = ""
+							this.userPasswordX = ""
+						}
+					}
+				})
 			},
 			cheat() {
 				this.activeClass = "userImg animate__animated animate__" + this.smallCheat[Math.floor(Math

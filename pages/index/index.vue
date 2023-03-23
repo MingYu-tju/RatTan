@@ -1,53 +1,53 @@
 <template>
 	<view class="ground">
-		<image class="back" src="/static/background1.png"></image>
-		<view class="hist">
-			<view class="history" @click="gotoHistoryPage" hover-class="hoverButton" hover-stay-time="100"
-				hover-start-time="0">
-				<image src="../../static/history.png"></image>
+			<image class="back" src="/static/background1.png"></image>
+			<view class="hist">
+				<view class="history" @click="gotoHistoryPage" hover-class="hoverButton" hover-stay-time="100"
+					hover-start-time="0">
+					<image src="../../static/history.png"></image>
+				</view>
 			</view>
-		</view>
 
-		<view class="tubebox">
-			<view class="tube tube1">
-				<showMessage v-if="show1"></showMessage>
+			<view class="tubebox">
+				<view class="tube tube1">
+					<showMessage v-if="show1"></showMessage>
+				</view>
+				<view class="tube tube2">
+					<showMessage v-if="show2" pos="right"></showMessage>
+				</view>
+				<view class="tube tube3">
+					<showMessage v-if="show3"></showMessage>
+				</view>
+				<view class="tube tube4">
+					<showMessage v-if="show4" pos="right"></showMessage>
+				</view>
+				<view class="tube tube5">
+					<showMessage v-if="show5"></showMessage>
+				</view>
+				<view class="tube tube6">
+					<showMessage v-if="show6"></showMessage>
+				</view>
+				<view class="tube tube7">
+					<showMessage v-if="show7" pos="right"></showMessage>
+				</view>
 			</view>
-			<view class="tube tube2">
-				<showMessage v-if="show2" pos="right"></showMessage>
+			<view class="tail">
+				<view class="custom" @click="gotoChangeImgPage" hover-class="hoverButton" hover-stay-time="100"
+					hover-start-time="0">				
+					<image :src="color" v-if="showImg"></image>
+					<image :src="cloth" v-if="showImg"></image>
+					<view v-if="!showImg">未登录</view>				
+				</view>
+				<view class="addButton" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
+					<image src="../../static/send.png" @click="gotoAddMessagePage"></image>
+				</view>
 			</view>
-			<view class="tube tube3">
-				<showMessage v-if="show3"></showMessage>
-			</view>
-			<view class="tube tube4">
-				<showMessage v-if="show4" pos="right"></showMessage>
-			</view>
-			<view class="tube tube5">
-				<showMessage v-if="show5"></showMessage>
-			</view>
-			<view class="tube tube6">
-				<showMessage v-if="show6"></showMessage>
-			</view>
-			<view class="tube tube7">
-				<showMessage v-if="show7" pos="right"></showMessage>
-			</view>
-		</view>
-		<view class="tail">
-			<view class="custom" @click="gotoChangeImgPage" hover-class="hoverButton" hover-stay-time="100"
-				hover-start-time="0">
-				<image :src="color" v-if="showImg"></image>
-				<image :src="cloth" v-if="showImg"></image>
-				<view v-if="!showImg">未登录</view>
-			</view>
-			<view class="addButton" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
-				<image src="../../static/send.png" @click="gotoAddMessagePage"></image>
-			</view>
-		</view>
 	</view>
-
 </template>
 
 <script>
-	const BaseUrl ="http://101.201.68.134:8199"
+	//const BaseUrl ="http://172.23.168.70:8080"
+	const BaseUrl = "http://101.201.68.134:8199"
 	export default {
 		data() {
 			return {
@@ -64,11 +64,11 @@
 			}
 		},
 		methods: {
-			gotoHistoryPage() {
-				if (getApp().globalData.login) //检查登陆状态，未登录跳转login页面
+			gotoHistoryPage() {		//历史记录按钮
+				if (getApp().globalData.login) 		//检查登陆状态，未登录跳转login页面
 					uni.navigateTo({
 						url: "../historymessage/historymessage",
-						animationType: 'slide-in-top',
+						animationType: 'slide-in-top',			//动画
 						animationDuration: 600
 					})
 				else {
@@ -77,8 +77,8 @@
 					})
 				}
 			},
-			gotoAddMessagePage() {
-				if (getApp().globalData.login)
+			gotoAddMessagePage() {		//发言按钮
+				if (getApp().globalData.login)		//检查登陆状态
 					uni.navigateTo({
 						url: "/pages/addmessage/addmessage",
 						animationType: 'zoom-fade-out',
@@ -90,8 +90,8 @@
 					})
 				}
 			},
-			gotoChangeImgPage() {
-				if (getApp().globalData.login)
+			gotoChangeImgPage() {		//换装按钮
+				if (getApp().globalData.login)		//检查登陆状态
 					uni.navigateTo({
 						url: "/pages/changeImage/changeImage",
 						animationType: 'slide-in-bottom',
@@ -103,7 +103,7 @@
 					})
 				}
 			},
-			tube1() { //生成showMessage组件并展示15秒，错开生成时间看起来有随机出现的效果，js单线程，不知道怎么实现真随机出现
+			tube1() { 	//生成showMessage组件并展示15秒，错开生成时间看起来有随机出现的效果，js单线程，不知道怎么实现真随机出现
 				this.show1 = 1
 				setTimeout(e => this.show1 = 0, 15000)
 			},
@@ -175,14 +175,13 @@
 <style lang="scss">
 	.ground {
 		width: 750rpx;
-		height: 1000rpx;
-
-		.back {
-			position: fixed;
-			width: 100%;
-			height: 100%;
-			top: 0;
-		}
+		height: 1395rpx;
+			.back {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 0;
+			}
 	}
 
 	.hist {
@@ -193,7 +192,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		z-index: 3;
 		.history {
 			width: 100rpx;
 			height: 100rpx;
@@ -208,10 +207,9 @@
 	}
 
 	.tubebox {
-		width: 750rpx;
-		height: 620rpx;
-		position: relative;
-		top: 370rpx;
+		width: 100%;
+		height: 100%;
+		position: absolute;
 
 		.tube {
 			width: 140rpx;
@@ -221,37 +219,38 @@
 		}
 
 		.tube1 {
+			top: 375rpx;
 			left: 24rpx;
 		}
 
 		.tube2 {
-			top: 5rpx;
+			top: 380rpx;
 			right: 18rpx;
 		}
 
 		.tube3 {
 			left: 236rpx;
-			top: 120rpx;
+			top: 495rpx;
 		}
 
 		.tube4 {
-			top: 242rpx;
+			top: 617rpx;
 			right: 18rpx;
 		}
 
 		.tube5 {
 			left: 90rpx;
-			top: 356rpx;
+			top: 731rpx;
 		}
 
 		.tube6 {
 			left: 310rpx;
-			bottom: 0;
+			bottom: 420rpx;
 		}
 
 		.tube7 {
 			right: 90rpx;
-			bottom: 120rpx;
+			bottom: 540rpx;
 		}
 	}
 
