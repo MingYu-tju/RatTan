@@ -27,8 +27,8 @@
 			return {
 				activeclass: "animate__animated animate__bounceIn",
 				title: "加载中...",
-				color: "../../static/color/a2.png",
-				cloth: "../../static/clothes/c2.png",
+				color: "../../static/color/a2.gif",
+				cloth: "../../static/clothes/c27.png",
 				messageId: "",
 				activeBubble: "../../static/tBubble1.png",
 				showTitle: {
@@ -53,7 +53,7 @@
 				method: "GET",
 				url: BaseUrl+"/comment/all",
 				success: res => {
-					this.color = "../../static/color/a" + res.data.colorId + ".png"
+					this.color = "../../static/color/a" + res.data.colorId + ".gif"
 				    this.cloth = "../../static/clothes/c" + res.data.clothId + ".png"
 					this.title = res.data.title
 					this.messageId = res.data.messageId

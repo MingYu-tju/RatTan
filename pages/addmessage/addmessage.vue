@@ -54,7 +54,7 @@
 		},
 		methods: {
 			backText(e) {
-				this.titleStyle['font-size'] = "75rpx"
+				this.titleStyle['font-size'] = "75rpx"			//背景的福报大字
 				this.titleStyle['top'] = "300rpx"
 				this.title = e.detail.value
 			},

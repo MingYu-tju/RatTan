@@ -33,7 +33,6 @@
 						userName:getApp().globalData.userName
 					},
 					success: (res) => {
-						console.log(res);
 						this.list=res.data.historyList
 						uni.hideLoading()
 					}

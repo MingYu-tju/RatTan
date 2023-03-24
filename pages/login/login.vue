@@ -119,7 +119,7 @@
 				activeClass: "userImg"
 			};
 		},
-		onHide() { //更新key值重置动画
+		onHide() { 		//更新key值重置动画
 			this.Key = Math.random()
 			this.show = false
 			this.showX = false
@@ -132,34 +132,34 @@
 		},
 		methods: {
 			login() {
-				uni.showLoading({
-					title: "登陆中...",
+				uni.showLoading({			//loading弹窗
+					title: "登陆中...",		
 					mask: true
 				})
-				uni.request({
-					method: "POST",
+				uni.request({		
+					method: "POST",	
 					url: BaseUrl + "/user/login",
 					header: {
 						'content-type': 'application/x-www-form-urlencoded'
 					},
-					data: {
+					data: {								//请求方式POST,参数为用户输入的账号密码
 						userName: this.userName,
 						userPassword: this.userPassword
 					},
 					success: res => {
-						if (res.data.success == 'true') {
+						if (res.data.success == 'true') {	//如果账号密码正确
 							getApp().globalData.colorId = res.data.colorId
 							getApp().globalData.clothId = res.data.clothId
-							getApp().globalData.userName = res.data.userName
+							getApp().globalData.userName = res.data.userName		
 							getApp().globalData.userCloth = "../../static/clothes/c" + res.data.clothId +
 								".png"
-							getApp().globalData.userColor = "../../static/color/a" + res.data.colorId + ".png"
-							getApp().globalData.login = true
-							this.show = false //展示已登录页面
-							this.showX = false
-							this.showS = true
+							getApp().globalData.userColor = "../../static/color/a" + res.data.colorId + ".gif"
+							getApp().globalData.login = true			//修改登录状态为true、修改鼠鼠全局的形象
 							this.color = getApp().globalData.userColor
 							this.cloth = getApp().globalData.userCloth
+							this.show = false 		//展示已登录页面
+							this.showX = false
+							this.showS = true
 							uni.hideLoading()
 						} else {
 							uni.hideLoading()

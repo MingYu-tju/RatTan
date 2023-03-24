@@ -66,10 +66,11 @@
 			};
 		},
 		onLoad(e) { //页面加载时发送请求
+			this.list = []
 			this.messageId = e.cid
 			uni.showLoading({
 				title: "加载中...",
-				mask: false
+				mask: true
 			})
 			uni.request({
 				method: "POST",
@@ -81,17 +82,17 @@
 					messageId: e.cid //请求参数，主页点击的发言编号
 				},
 				success: (res) => {
-					this.list = [] //轮播图插件的数组
+					//轮播图插件的数组
 					for (let i = 0; i < res.data.commentsList.length; i++) { //先添加留言最后再添加详情页
 						this.list.push({
 							content: res.data.commentsList[i].content,
-							color: "../../static/color/a" + res.data.commentsList[i].color + ".png",
+							color: "../../static/color/a" + res.data.commentsList[i].color + ".gif",
 							cloth: "../../static/clothes/c" + res.data.commentsList[i].cloth + ".png"
 						})
 					}
 					this.list.push({
 						content: res.data.detail,
-						color: "../../static/color/a" + res.data.colorId + ".png",
+						color: "../../static/color/a" + res.data.colorId + ".gif",
 						cloth: "../../static/clothes/c" + res.data.clothId + ".png"
 					})
 					this.show = this.list.length

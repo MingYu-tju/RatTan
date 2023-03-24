@@ -128,6 +128,18 @@
 					<view v-if="selectedCloth==24" class="selected"></view>
 					<view class="clothName">衣冠禽鼠</view>
 				</view>
+				<view @click="changeCloth(25)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==25" class="selected"></view>
+					<view class="clothName">卡嘎咪玲</view>
+				</view>
+				<view @click="changeCloth(26)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==26" class="selected"></view>
+					<view class="clothName">卡嘎咪连</view>
+				</view>
+				<view @click="changeCloth(27)" hover-class="hoverButton" hover-stay-time="200" hover-start-time="0">
+					<view v-if="selectedCloth==27" class="selected"></view>
+					<view class="clothName">啥都不穿</view>
+				</view>
 
 			</view>
 			<view class="button" @click="submit" hover-class="hoverButton" hover-stay-time="100" hover-start-time="0">
@@ -155,7 +167,7 @@
 		methods: {
 			changeColor(e) {
 				if (this.selectedColor != e) {
-					this.color = "../../static/color/a" + e + ".png"
+					this.color = "../../static/color/a" + e + ".gif"
 					this.selectedColor = e
 					this.test1 = Math.random() //重置动画
 				}

@@ -36,7 +36,7 @@
 				cloth: ""
 			};
 		},
-		methods: { //接口未完成
+		methods: {
 			deleteMessage() {
 				uni.showModal({
 					content: "确定删除？",
@@ -85,7 +85,7 @@
 			}
 		},
 		created() {
-			this.color = "../../static/color/a" + this.item.colorId + ".png"
+			this.color = "../../static/color/a" + this.item.colorId + ".gif"
 			this.cloth = "../../static/clothes/c" + this.item.clothId + ".png"
 		}
 	}
